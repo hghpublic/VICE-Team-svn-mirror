@@ -1,0 +1,111 @@
+NOTE: Install GNU parallel for faster execution
+Generating sources in src: infocontrib.h
+Creating src/CMakeLists.txt ()
+Generating sources in src/resid: wave6581_PST.h wave6581_PS_.h wave6581_P_T.h wave6581__ST.h wave8580_PST.h wave8580_PS_.h wave8580_P_T.h wave8580__ST.h
+Creating src/resid/CMakeLists.txt (libresid)
+Creating src/resid-dtv/CMakeLists.txt (libresiddtv)
+Creating src/joyport/CMakeLists.txt (libjoyport)
+Creating src/drive/CMakeLists.txt (libdrive)
+Creating src/drive/iec/CMakeLists.txt (libdriveiec)
+Creating src/drive/iec/c64exp/CMakeLists.txt (libdriveiecc64exp)
+Creating src/drive/iec/plus4exp/CMakeLists.txt (libdriveiecplus4exp)
+Creating src/drive/iec128dcr/CMakeLists.txt (libdriveiec128dcr)
+Creating src/drive/iecieee/CMakeLists.txt (libdriveiecieee)
+Creating src/drive/ieee/CMakeLists.txt (libdriveieee)
+Creating src/drive/tcbm/CMakeLists.txt (libdrivetcbm)
+Creating src/vdrive/CMakeLists.txt (libvdrive)
+Creating src/fsdevice/CMakeLists.txt (libfsdevice)
+Creating src/diskimage/CMakeLists.txt (libdiskimage)
+Creating src/iecbus/CMakeLists.txt (libiecbus)
+Creating src/serial/CMakeLists.txt (libserial)
+Creating src/parallel/CMakeLists.txt (libparallel)
+Creating src/tape/CMakeLists.txt (libtape)
+Creating src/imagecontents/CMakeLists.txt (libimagecontents)
+Creating src/fileio/CMakeLists.txt (libfileio)
+Creating src/video/CMakeLists.txt (libvideo)
+Creating src/raster/CMakeLists.txt (libraster)
+Creating src/vicii/CMakeLists.txt (libvicii, libviciidtv)
+Creating src/viciisc/CMakeLists.txt (libviciisc)
+Creating src/vdc/CMakeLists.txt (libvdc)
+Creating src/crtc/CMakeLists.txt (libcrtc)
+Creating src/gfxoutputdrv/CMakeLists.txt (libgfxoutputdrv)
+Creating src/printerdrv/CMakeLists.txt (libprinterdrv)
+Creating src/rs232drv/CMakeLists.txt (librs232drv, librs232drvpet)
+Creating src/samplerdrv/CMakeLists.txt (libsamplerdrv)
+Creating src/sid/CMakeLists.txt (libsid, libsid_dtv)
+Generating sources in src/monitor: mon_parse.c mon_parse.h mon_lex.c
+Creating src/monitor/CMakeLists.txt (libmonitor)
+Creating src/core/CMakeLists.txt (libcore)
+Creating src/core/rtc/CMakeLists.txt (librtc)
+Creating src/userport/CMakeLists.txt (libuserport)
+Creating src/tapeport/CMakeLists.txt (libtapeport)
+Creating src/diag/CMakeLists.txt (libdiag)
+Generating sources in src/c64: psiddrv.h
+Creating src/c64/CMakeLists.txt (libvsid, libvsidstubs, libc64, libc64stubs, libc64sc, libc64scstubs, libc64c128, libc64c64dtv, libc64scpu64)
+Creating src/c64/cart/CMakeLists.txt (libc64cartsystem, libc64cart, libc64commoncart)
+Creating src/scpu64/CMakeLists.txt (libscpu64, libscpu64stubs)
+Creating src/c64dtv/CMakeLists.txt (libc64dtv, libc64dtvstubs)
+Creating src/c128/CMakeLists.txt (libc128, libc128stubs)
+Creating src/c128/cart/CMakeLists.txt (libc128cartsystem)
+Creating src/vic20/CMakeLists.txt (libvic20, libvic20stubs)
+Creating src/vic20/cart/CMakeLists.txt (libvic20cart, libmascuerade)
+Creating src/pet/CMakeLists.txt (libpet, libpetstubs)
+Creating src/plus4/CMakeLists.txt (libplus4, libplus4stubs)
+Creating src/plus4/cart/CMakeLists.txt (libplus4cart)
+Creating src/cbm2/CMakeLists.txt (libcbm2, libcbm2stubs, libcbm5x0, libcbm5x0stubs)
+Creating src/cbm2/cart/CMakeLists.txt (libcbm2cart)
+Creating src/arch/CMakeLists.txt ()
+Creating src/arch/shared/CMakeLists.txt (libarchdep)
+Creating src/arch/shared/hwsiddrv/CMakeLists.txt (libhwsiddrv)
+Creating src/arch/shared/mididrv/CMakeLists.txt (libmididrv)
+Creating src/arch/shared/socketdrv/CMakeLists.txt (libsocketdrv)
+Creating src/arch/shared/sounddrv/CMakeLists.txt (libsounddrv)
+Generating sources in src/arch/shared/hotkeys: keysymtable.h
+Creating src/arch/shared/hotkeys/CMakeLists.txt (libhotkeys)
+Creating src/arch/sdl/CMakeLists.txt (libarch, libtoolarch)
+Creating src/lib/CMakeLists.txt ()
+Creating src/lib/p64/CMakeLists.txt (libp64)
+Creating src/lib/linenoise-ng/CMakeLists.txt (liblinenoiseng)
+Creating src/lib/libzmbv/CMakeLists.txt (libzmbv)
+Creating src/lib/md5/CMakeLists.txt (libmd5)
+Creating src/hvsc/CMakeLists.txt (libhvsc)
+Creating src/datasette/CMakeLists.txt (libdatasette)
+Creating src/tools/CMakeLists.txt ()
+Creating src/tools/cartconv/CMakeLists.txt ()
+Creating src/tools/petcat/CMakeLists.txt ()
+Executable x64 not configured
+Emulator: x64sc
+Emulator: x128
+Emulator: x64dtv
+Emulator: xscpu64
+Emulator: xvic
+Emulator: xpet
+Emulator: xplus4
+Emulator: xcbm2
+Emulator: xcbm5x0
+Emulator: c1541
+Emulator: vsid
+Tool: petcat
+Tool: cartconv
+Creating top level CMakeLists.txt
+Done.
+
+CMake can now be used to generate an alternative build system. Example usage:
+
+	# Generate a Unix Makefiles project in current working directory:
+	# (Note: this replaces the original configured Makefiles)
+	cmake .
+
+	# Generate a Unix Makefiles project in a build directory:
+	cmake -B <build directory>
+
+	# Or:
+	mkdir <build directory>
+	cd <build directory>
+	cmake ..
+
+	# Generate an Xcode project in a build directory:
+	cmake -G Xcode -B <path to build directory>
+
+Run cmake --help to see a list of supported project generators on this platform.
+
