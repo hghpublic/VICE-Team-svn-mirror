@@ -1,0 +1,12 @@
+Checking autoconf version >= 2.60 .. OK: 2.71
+Checking automake version >= 1.10.2 .. OK: 1.16.5
+/workspaces/VICE-Team-svn-mirror/vice/src/resid: aclocal
+/workspaces/VICE-Team-svn-mirror/vice/src/resid: autoconf -f
+/workspaces/VICE-Team-svn-mirror/vice/src/resid: automake -a -c
+/workspaces/VICE-Team-svn-mirror/vice/src/resid-dtv: aclocal
+/workspaces/VICE-Team-svn-mirror/vice/src/resid-dtv: autoconf -f
+/workspaces/VICE-Team-svn-mirror/vice/src/resid-dtv: automake -a -c
+/workspaces/VICE-Team-svn-mirror/vice: aclocal
+/workspaces/VICE-Team-svn-mirror/vice: autoconf -f
+/workspaces/VICE-Team-svn-mirror/vice: autoheader
+/workspaces/VICE-Team-svn-mirror/vice: automake -a -c

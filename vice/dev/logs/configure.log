@@ -1,0 +1,574 @@
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a race-free mkdir -p... /usr/bin/mkdir -p
+checking for gawk... no
+checking for mawk... mawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking build system type... aarch64-unknown-linux-gnu
+checking host system type... aarch64-unknown-linux-gnu
+checking for cc... cc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether the compiler supports GNU C... yes
+checking whether cc accepts -g... yes
+checking for cc option to enable C11 features... none needed
+checking whether cc understands -c and -o together... yes
+checking whether make supports the include directive... yes (GNU style)
+checking dependency style of cc... gcc3
+checking how to run the C preprocessor... cc -E
+checking for c++... c++
+checking whether the compiler supports GNU C++... yes
+checking whether c++ accepts -g... yes
+checking for c++ option to enable C++11 features... none needed
+checking dependency style of c++... gcc3
+checking whether c++ supports C++11 features with -std=c++11... yes
+checking how to run the C++ preprocessor... c++ -std=c++11 -E
+checking for cc... cc
+checking whether the compiler supports GNU Objective C... no
+checking whether cc accepts -g... no
+checking dependency style of cc... gcc3
+checking if the C compiler supports -W... yes
+checking if the C compiler supports -Wall... yes
+checking if the C compiler supports -Wextra... yes
+checking if the C compiler supports -Wformat... yes
+checking if the C compiler supports -Wformat-signedness... yes
+checking if the C compiler supports -Wformat-pedantic... no
+checking if the C compiler supports -Wformat-security... yes
+checking if the C compiler supports -Wshadow... yes
+checking if the C compiler supports -Wpointer-arith... yes
+checking if the C compiler supports -Wmissing-prototypes... yes
+checking if the C compiler supports -Wstrict-prototypes... yes
+checking if the C compiler supports -Wuninitialized... yes
+checking if the C compiler supports -Wmissing-field-initializers... yes
+checking if the C compiler supports -Wunreachable-code... yes
+checking if the C compiler supports -Wmacro-redefined... no
+checking if the C compiler supports -Werror=implicit-function-declaration... yes
+checking if the C compiler supports -Wfatal-errors... yes
+checking if the C compiler supports -fdiagnostics-absolute-paths... no
+checking if the C compiler supports -Wshorten-64-to-32... no
+checking if the C compiler supports -Wdiscarded-qualifiers... yes
+checking if the C compiler supports -Wno-unknown-pragmas... yes
+checking if the C compiler supports -Wunused-but-set-variable... yes
+checking if the C compiler supports -Wno-sign-compare... yes
+checking if the C compiler supports -Wno-ignored-qualifiers... yes
+checking if the C compiler supports -Wno-unused-parameter... yes
+checking if the C++ compiler supports -Wall... yes
+checking if the C++ compiler supports -Wformat... yes
+checking if the C++ compiler supports -Wformat-pedantic... no
+checking if the C++ compiler supports -Wshadow... yes
+checking if the C++ compiler supports -Wpointer-arith... yes
+checking if the C++ compiler supports -Wuninitialized... yes
+checking if the C++ compiler supports -Wunreachable-code... yes
+checking if the C++ compiler supports -Wno-unused-parameter... yes
+checking if the C++ compiler supports -Wmissing-prototypes... no
+checking if the C++ compiler supports -Werror=implicit-function-declaration... no
+checking if the C++ compiler supports -Wfatal-errors... yes
+checking if the C++ compiler supports -fdiagnostics-absolute-paths... no
+checking if the C++ compiler supports -Wshorten-64-to-32... no
+checking if the C++ compiler supports -Wno-address-of-packed-member... yes
+checking if the C++ compiler supports -Wno-char-subscripts... yes
+checking if the C++ compiler supports -Wno-format-signedness... yes
+checking if the C++ compiler supports -Wno-missing-prototypes... no
+checking if the C++ compiler supports -Wno-c99-designator... yes
+checking if the C++ compiler supports -Wno-shorten-64-to-32... yes
+checking if the C++ compiler supports -Wno-nonnull-compare... yes
+checking if the C compiler supports -Wno-unused-label... yes
+checking if the C compiler supports -Wno-unreachable-code... yes
+checking if the C compiler supports -Wno-misleading-indentation... yes
+checking for gawk... (cached) mawk
+checking whether ln -s works... yes
+checking for flex... flex
+checking for lex output file root... lex.yy
+checking for lex library... none needed
+checking for library containing yywrap... no
+checking whether yytext is a pointer... yes
+checking for ld used by GCC... /usr/bin/ld
+checking if the linker (/usr/bin/ld) is GNU ld... yes
+checking for ar... ar
+checking for svn... :
+checking for tar... tar
+checking for svnversion... :
+checking for byacc... no
+checking for yacc... yacc
+checking for makeinfo... ${SHELL} '/workspaces/VICE-Team-svn-mirror/vice/missing' makeinfo
+checking for dos2unix... dos2unix
+checking for xa... xa
+checking for perl... perl
+checking for iconv... iconv
+checking for ranlib... ranlib
+checking for strip... strip
+checking for objdump... objdump
+checking for sdl-config... no
+checking dependency style of cc... gcc3
+checking for special C compiler options needed for large files... no
+checking for _FILE_OFFSET_BITS value needed for large files... no
+checking for stdio.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for strings.h... yes
+checking for sys/stat.h... yes
+checking for sys/types.h... yes
+checking for unistd.h... yes
+checking for vfork.h... no
+checking for ssize_t... yes
+checking for pkg-config... /usr/bin/pkg-config
+checking pkg-config is at least version 0.9.0... yes
+checking for time_t in time.h... yes
+checking for time_t in sys/types.h... yes
+checking size of time_t... 8
+checking if the compiler supports -march=native... yes
+checking if ar truncates object names... ar: `u' modifier ignored since `D' is the default (see `U')
+no
+checking for native OpenMP... yes
+checking for GTK... no
+checking for GLIB... yes
+checking for glib-compile-resources... glib-compile-resources
+checking for glib-genmarshal... glib-genmarshal
+checking for SDL2... yes
+checking for SDL_NumJoysticks... yes
+checking for SDL2_IMAGE... yes
+checking for icotool... no
+checking for libiconv_open in -liconv... no
+checking if the compiler accepts --param inline-unit-growth=60... yes
+checking if the compiler accepts --param max-inline-insns-single=600... yes
+checking whether the compiler supports GNU C++... (cached) yes
+checking whether c++ -std=c++11 accepts -g... (cached) yes
+checking for c++ -std=c++11 option to enable C++11 features... (cached) none needed
+checking dependency style of c++ -std=c++11... (cached) gcc3
+checking whether the C++ compiler (c++ -std=c++11  -fno-exceptions ) works... yes
+checking how to run the C++ preprocessor... c++ -std=c++11 -E
+checking for sys/types.h... (cached) yes
+checking for off_t... yes
+checking for pid_t... yes
+checking for size_t... yes
+checking for ssize_t... (cached) yes
+checking whether byte ordering is bigendian... no
+checking size of unsigned short... 2
+checking size of unsigned int... 4
+checking size of unsigned long... 8
+checking for dirent.h that defines DIR... yes
+checking for library containing opendir... none required
+checking for direct.h... no
+checking for errno.h... yes
+checking for fcntl.h... yes
+checking for limits.h... yes
+checking for regex.h... yes
+checking for unistd.h... (cached) yes
+checking for strings.h... (cached) yes
+checking for sys/dirent.h... no
+checking for sys/stat.h... (cached) yes
+checking for inttypes.h... (cached) yes
+checking for libgen.h... yes
+checking for sys/ioctl.h... yes
+checking for dir.h... no
+checking for io.h... no
+checking for process.h... no
+checking for signal.h... yes
+checking for alloca.h... yes
+checking for wchar.h... yes
+checking for stdint.h... (cached) yes
+checking for sys/time.h... yes
+checking for regexp.h... no
+checking for cc options needed to detect all undeclared functions... none needed
+checking whether sys_siglist is declared... no
+checking for sys/capability.h... no
+checking for dlfcn.h... yes
+checking for dlopen... yes
+checking for math.h... yes
+checking for sqrt in -lm... yes
+checking for zlib.h... yes
+checking for zlibVersion in -lz... (cached) yes
+checking for libcurl... yes
+checking for sys/types.h... (cached) yes
+checking for unistd.h... (cached) yes
+checking for sys/socket.h... yes
+checking for sys/time.h... (cached) yes
+checking for sys/select.h... yes
+checking for netinet/in.h... yes
+checking for arpa/inet.h... yes
+checking for netdb.h... yes
+checking for dgettext in -lintl... no
+checking for gethostbyname in -lnsl... no
+checking for gethostbyname in -lsocket... no
+checking for gethostbyname in -lbsd... no
+checking for gethostbyname in -lnet... no
+checking for gethostbyname in -linet... no
+checking for netinet/tcp.h... yes
+checking for socket... yes
+checking for send... yes
+checking for bind... yes
+checking for listen... yes
+checking for gethostbyname... yes
+checking for connect... yes
+checking for recv... yes
+checking for accept... yes
+checking for htons... yes
+checking for htonl... yes
+checking for getdtablesize... yes
+checking for getrlimit... yes
+checking For socklen_t... yes
+checking for in_addr_t... yes
+checking for Unix domain sockets... yes
+checking if IPV6 should be enabled... yes
+checking struct sockaddr::ss_family... yes
+checking for gethostbyname2... yes
+checking if we are using glibc-2.20 and up... yes
+checking for pulse/simple.h... yes
+checking for pa_simple_new in -lpulse-simple... yes
+checking for alsa/asoundlib.h... yes
+checking for snd_pcm_open in -lasound... yes
+checking for snd_pcm_avail in -lasound... yes
+checking for sys/audioio.h... no
+checking for fc-cache... /usr/bin/fc-cache
+checking for pkg-config... (cached) /usr/bin/pkg-config
+checking pkg-config is at least version 0.9.0... yes
+checking for libusb-1.0/libusb.h... no
+checking for USBSID-Pico support... no (LIBUSB not found!!)
+checking return type of signal handlers... void
+checking for fork... yes
+checking for vfork... yes
+checking for working fork... yes
+checking for working vfork... (cached) yes
+checking for u_short... yes
+checking for socklen_t... yes
+checking for off_t... (cached) yes
+checking for off_t... (cached) yes
+checking for gettimeofday in -lbsd... no
+checking for gettimeofday in -lposix... no
+checking for gettimeofday... yes
+checking for memmove... yes
+checking for atexit... yes
+checking for strerror... yes
+checking for strcasecmp... yes
+checking for strncasecmp... yes
+checking for dirname... yes
+checking for mkstemp... yes
+checking for swab... yes
+checking for getcwd... yes
+checking for getpwuid... yes
+checking for random... yes
+checking for rewinddir... yes
+checking for strtok... yes
+checking for strtok_r... yes
+checking for strtoul... yes
+checking for snprintf... yes
+checking for vsnprintf... yes
+checking for ltoa... no
+checking for ultoa... no
+checking for stpcpy... yes
+checking for strlcpy... yes
+checking for strlwr... no
+checking for strrev... no
+checking for fseeko... yes
+checking for ftello... yes
+checking for _fseeki64... no
+checking for _ftelli64... no
+checking for strdup... yes
+checking for nanosleep... yes
+checking for png.h... yes
+checking for png_sig_cmp in -lpng... yes
+checking for OpenCBM support... yes
+checking that generated files are newer than configure... done
+=== configuring in src/resid (/workspaces/VICE-Team-svn-mirror/vice/src/resid)
+configure: running /bin/bash ./configure '--prefix=/usr/local' --disable-option-checking  '--disable-option-checking' '--srcdir=.' --cache-file=
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a race-free mkdir -p... /usr/bin/mkdir -p
+checking for gawk... no
+checking for mawk... mawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking build system type... aarch64-unknown-linux-gnu
+checking host system type... aarch64-unknown-linux-gnu
+checking for debugging... build without asserts
+checking for c++... c++
+checking whether the C++ compiler works... yes
+checking for C++ compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether the compiler supports GNU C++... yes
+checking whether c++ accepts -g... yes
+checking for c++ option to enable C++11 features... none needed
+checking whether make supports the include directive... yes (GNU style)
+checking dependency style of c++... gcc3
+checking if the compiler supports -march=native... yes
+checking whether g++ accepts -g -Wall -O3 -march=native -fno-exceptions... yes
+checking for ar... ar
+checking for ranlib... ranlib
+checking for perl... /usr/bin/perl
+checking for stdio.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for strings.h... yes
+checking for sys/stat.h... yes
+checking for sys/types.h... yes
+checking for unistd.h... yes
+checking for math.h... yes
+checking size of int... 4
+checking for working bool... yes
+checking for __builtin_expect... yes
+checking for log1p... yes
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating siddefs.h
+config.status: executing depfiles commands
+=== configuring in src/resid-dtv (/workspaces/VICE-Team-svn-mirror/vice/src/resid-dtv)
+configure: running /bin/bash ./configure '--prefix=/usr/local' --disable-option-checking  '--disable-option-checking' '--srcdir=.' --cache-file=
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a race-free mkdir -p... /usr/bin/mkdir -p
+checking for gawk... no
+checking for mawk... mawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking build system type... aarch64-unknown-linux-gnu
+checking host system type... aarch64-unknown-linux-gnu
+checking for c++... c++
+checking whether the C++ compiler works... yes
+checking for C++ compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether the compiler supports GNU C++... yes
+checking whether c++ accepts -g... yes
+checking for c++ option to enable C++11 features... none needed
+checking whether make supports the include directive... yes (GNU style)
+checking dependency style of c++... gcc3
+checking whether the C++ compiler (c++ -g -Wall -O2 -funroll-loops -fomit-frame-pointer -fno-exceptions ) works... yes
+checking for ar... ar
+checking for ranlib... ranlib
+checking for stdio.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for strings.h... yes
+checking for sys/stat.h... yes
+checking for sys/types.h... yes
+checking for unistd.h... yes
+checking size of int... 4
+checking for working bool... yes
+checking if the mmintrin.h include can be used... no
+checking if -mmmx is needed to activate MMX... no
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating siddtvdefs.h
+config.status: executing depfiles commands
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating build/Makefile
+config.status: creating build/beos/Makefile
+config.status: creating data/Makefile
+config.status: creating data/C128/Makefile
+config.status: creating data/C64/Makefile
+config.status: creating data/C64DTV/Makefile
+config.status: creating data/CBM-II/Makefile
+config.status: creating data/DRIVES/Makefile
+config.status: creating data/PET/Makefile
+config.status: creating data/PLUS4/Makefile
+config.status: creating data/SCPU64/Makefile
+config.status: creating data/PRINTER/Makefile
+config.status: creating data/VIC20/Makefile
+config.status: creating data/common/Makefile
+config.status: creating data/GLSL/Makefile
+config.status: creating data/hotkeys/Makefile
+config.status: creating doc/Makefile
+config.status: creating doc/building/Makefile
+config.status: creating doc/html/Makefile
+config.status: creating doc/readmes/Makefile
+config.status: creating doc/vim/Makefile
+config.status: creating doc/vim/ftdetect/Makefile
+config.status: creating doc/vim/syntax/Makefile
+config.status: creating src/Makefile
+config.status: creating src/debug.h
+config.status: creating src/arch/Makefile
+config.status: creating src/arch/gtk3/Makefile
+config.status: creating src/arch/gtk3/data/Makefile
+config.status: creating src/arch/gtk3/data/macos/Makefile
+config.status: creating src/arch/gtk3/data/win32/Makefile
+config.status: creating src/arch/gtk3/joystickdrv/Makefile
+config.status: creating src/arch/gtk3/novte/Makefile
+config.status: creating src/arch/gtk3/widgets/Makefile
+config.status: creating src/arch/gtk3/widgets/base/Makefile
+config.status: creating src/arch/sdl/Makefile
+config.status: creating src/arch/headless/Makefile
+config.status: creating src/arch/shared/Makefile
+config.status: creating src/arch/shared/hotkeys/Makefile
+config.status: creating src/arch/shared/hwsiddrv/Makefile
+config.status: creating src/arch/shared/mididrv/Makefile
+config.status: creating src/arch/shared/socketdrv/Makefile
+config.status: creating src/arch/shared/sounddrv/Makefile
+config.status: creating src/buildtools/Makefile
+config.status: creating src/c128/Makefile
+config.status: creating src/c128/cart/Makefile
+config.status: creating src/c64/Makefile
+config.status: creating src/c64/cart/Makefile
+config.status: creating src/c64dtv/Makefile
+config.status: creating src/scpu64/Makefile
+config.status: creating src/cbm2/Makefile
+config.status: creating src/cbm2/cart/Makefile
+config.status: creating src/core/Makefile
+config.status: creating src/core/rtc/Makefile
+config.status: creating src/crtc/Makefile
+config.status: creating src/datasette/Makefile
+config.status: creating src/diag/Makefile
+config.status: creating src/diskimage/Makefile
+config.status: creating src/drive/Makefile
+config.status: creating src/drive/iec/Makefile
+config.status: creating src/drive/iec/c64exp/Makefile
+config.status: creating src/drive/iec/plus4exp/Makefile
+config.status: creating src/drive/iec128dcr/Makefile
+config.status: creating src/drive/iecieee/Makefile
+config.status: creating src/drive/ieee/Makefile
+config.status: creating src/drive/tcbm/Makefile
+config.status: creating src/fileio/Makefile
+config.status: creating src/fsdevice/Makefile
+config.status: creating src/gfxoutputdrv/Makefile
+config.status: creating src/hvsc/Makefile
+config.status: creating src/iecbus/Makefile
+config.status: creating src/imagecontents/Makefile
+config.status: creating src/joyport/Makefile
+config.status: creating src/lib/Makefile
+config.status: creating src/lib/p64/Makefile
+config.status: creating src/lib/linenoise-ng/Makefile
+config.status: creating src/lib/libusbsiddrv/Makefile
+config.status: creating src/lib/libzmbv/Makefile
+config.status: creating src/lib/md5/Makefile
+config.status: creating src/monitor/Makefile
+config.status: creating src/parallel/Makefile
+config.status: creating src/pet/Makefile
+config.status: creating src/plus4/Makefile
+config.status: creating src/plus4/cart/Makefile
+config.status: creating src/printerdrv/Makefile
+config.status: creating src/raster/Makefile
+config.status: creating src/rs232drv/Makefile
+config.status: creating src/samplerdrv/Makefile
+config.status: creating src/serial/Makefile
+config.status: creating src/sid/Makefile
+config.status: creating src/tape/Makefile
+config.status: creating src/tapeport/Makefile
+config.status: creating src/tools/Makefile
+config.status: creating src/tools/cartconv/Makefile
+config.status: creating src/tools/petcat/Makefile
+config.status: creating src/userport/Makefile
+config.status: creating src/vdc/Makefile
+config.status: creating src/vdrive/Makefile
+config.status: creating src/vic20/Makefile
+config.status: creating src/vic20/cart/Makefile
+config.status: creating src/vicii/Makefile
+config.status: creating src/viciisc/Makefile
+config.status: creating src/video/Makefile
+config.status: creating src/version.h
+config.status: creating src/vice-version.sh
+config.status: creating src/config.h
+config.status: executing depfiles commands
+----------------------------------------------------------------------
+
+configure summary:
+
+Platform canonical : aarch64-unknown-linux-gnu
+Architecture       : Unix
+GUI                : SDL 2.x
+Multithreaded UI   : no
+OpenMP             : yes
+Program prefix     : (none) (--program-prefix)
+Program suffix     : (none) (--program-suffix)
+
+SCREEN/UI
+---------
+Hardware scaling support       : yes
+
+SOUND
+-----
+FastSID support              : no  (--with/without-fastsid)
+ReSID support                : yes (--with/without-resid)
+New 8580 filter support      : yes (--enable/disable-new8580filter)
+PortAudio sound input support: no  (--with/without-portaudio)
+OSS sound support            : no  (--with/without-oss)
+ALSA sound support           : yes (--with/without-alsa)
+Pulseaudio sound support     : yes (--with/without-pulse)
+SDL sound support            : no  (--with/without-sdlsound)
+NetBSD/Solaris sound support : no 
+MIDI support                 : no  (--enable/disable-midi)
+USBSID-Pico support          : no 
+Catweasel MK3 support        : no  (--enable/disable-catweasel)
+HardSID support              : no  (--enable/disable-hardsid)
+ParSID support               : no  (--enable/disable-parsid)
+direct I/O access support    : no 
+lpt port access              : no 
+PCI utils support            : no 
+MP3 encoding support         : no  (--with/without-lame)
+MP3 decoding support         : no  (--with/without-mpg123)
+FLAC en/de-coding support    : no  (--with/without-flac)
+Vorbis en/de-coding support  : no  (--with/without-vorbis)
+
+SCREENSHOTS
+-----------
+GIF encoding support : no  (--with/without-gif)
+PNG encoding support : yes (--with/without-png)
+
+INPUT
+-----
+Mouse support               : yes
+Lightpen support            : yes
+Linux style joystick support: no 
+USB joystick support        : no 
+
+MODEM/NETWORK
+-------------
+RS232 device support             : yes (--enable/disable-rs232)
+Network support                  : yes
+RS232 network support            : yes
+IPv6 network support             : yes (--enable/disable-ipv6)
+Network capture/injection support: no  (--enable/disable-ethernet)
+libcurl support                  : yes (--with/without-libcurl)
+
+DRIVE
+-----
+Real device (OpenCBM support)    : yes (--enable/disable-realdevice)
+X64 image support                : no  (--enable/disable--x64-image)
+
+LIBS
+----
+Dynamic linking support           : yes
+POSIX 1003.1e capabilities support: no 
+libieee1284 support               : no  (--with/--wihout-libieee1284)
+
+DOCUMENTATION
+-------------
+Generate Info/text: yes
+Generate PDF      : no
+Generate HTML     : yes
+
+MISC
+----
+65xx CPU history support      : yes (--enable/disable-cpuhistory)
+Debug support                 : no  (--enable/disable-debug)
+Threading debug support       : no  (--enable/disable-debug-threads
+Build old x64 emulator        : no (--enable/--disable-x64)
+Install XDG .desktop files    : no 
+icotool for Windows found     : no
+Experimental devices emulation: no  (--enable-experimental-devices)
+
+User CPPFLAGS:  
+VICE_CPPFLAGS:  -I$(top_srcdir)/src/arch/systemheaderoverride -DNDEBUG
+User CFLAGS:    
+VICE CFLAGS:    -g -O3 -W -Wall -Wextra -Wformat -Wformat-signedness -Wformat-security -Wshadow -Wpointer-arith -Wmissing-prototypes -Wstrict-prototypes -Wuninitialized -Wmissing-field-initializers -Wunreachable-code -Werror=implicit-function-declaration -Wfatal-errors -Wdiscarded-qualifiers -Wno-unknown-pragmas -Wunused-but-set-variable -Wno-sign-compare -Wno-ignored-qualifiers -Wno-unused-parameter -fopenmp -I/usr/include/SDL2 -D_REENTRANT  -I/usr/include/SDL2 -D_REENTRANT -I/usr/include/libpng16 -I/usr/include/aarch64-linux-gnu -I/usr/include/webp  -I/usr/include/aarch64-linux-gnu 
+User CXXFLAGS:   -fno-exceptions
+VICE CXXFLAGS:  -g -O3 -Wall -Wformat -Wshadow -Wpointer-arith -Wuninitialized -Wunreachable-code -Wno-unused-parameter -Wfatal-errors -fopenmp -I/usr/include/SDL2 -D_REENTRANT  -I/usr/include/SDL2 -D_REENTRANT -I/usr/include/libpng16 -I/usr/include/aarch64-linux-gnu -I/usr/include/webp 
+VTE_CXXFLAGS:    -Wno-address-of-packed-member -Wno-char-subscripts -Wno-format-signedness -Wno-c99-designator -Wno-shorten-64-to-32 -Wno-nonnull-compare
+MONITOR_CFLAGS:  -Wno-unused-label -Wno-unreachable-code -Wno-misleading-indentation
+User LDFLAGS:   
+VICE LDFLAGS:    -fopenmp 
+----------------------------------------------------------------------
