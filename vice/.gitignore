@@ -1,0 +1,65 @@
+# vice
+
+# autogen.sh
+.aclocal.out
+.autoconf.out
+.autoheader.out
+.automake.out
+aclocal.m4
+compile
+depcomp
+Makefile.in
+missing
+configure
+configure~
+requests
+ylwrap
+output.?
+traces.?
+COPYING
+INSTALL
+config.h.in
+
+# configure
+Makefile
+*.Po
+config.log
+config.status
+config.h
+debug.h
+version.h
+siddefs.h
+siddtvdefs.h
+stamp-h1
+vice-version.sh
+
+# make
+
+*.o
+*.a
+
+*.html
+
+NEWS
+
+vice.texi
+
+# binaries
+
+c1541
+vsid
+x64dtv
+x64sc
+x128
+xcbm2
+xcbm5x0
+xpet
+xplus4
+xscpu64
+xvic
+cartconv
+petcat
+
+# cmake_bootstrap
+
+.cmake_bootstrap_makefile_hash
