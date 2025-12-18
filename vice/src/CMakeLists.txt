@@ -1,0 +1,2880 @@
+add_subdirectory(resid)
+add_subdirectory(resid-dtv)
+add_subdirectory(joyport)
+add_subdirectory(drive)
+add_subdirectory(vdrive)
+add_subdirectory(fsdevice)
+add_subdirectory(diskimage)
+add_subdirectory(iecbus)
+add_subdirectory(serial)
+add_subdirectory(parallel)
+add_subdirectory(tape)
+add_subdirectory(imagecontents)
+add_subdirectory(fileio)
+add_subdirectory(video)
+add_subdirectory(raster)
+add_subdirectory(vicii)
+add_subdirectory(viciisc)
+add_subdirectory(vdc)
+add_subdirectory(crtc)
+add_subdirectory(gfxoutputdrv)
+add_subdirectory(printerdrv)
+add_subdirectory(rs232drv)
+add_subdirectory(samplerdrv)
+add_subdirectory(sid)
+add_subdirectory(monitor)
+add_subdirectory(core)
+add_subdirectory(userport)
+add_subdirectory(tapeport)
+add_subdirectory(diag)
+add_subdirectory(c64)
+add_subdirectory(scpu64)
+add_subdirectory(c64dtv)
+add_subdirectory(c128)
+add_subdirectory(vic20)
+add_subdirectory(pet)
+add_subdirectory(plus4)
+add_subdirectory(cbm2)
+add_subdirectory(arch)
+add_subdirectory(lib)
+add_subdirectory(hvsc)
+add_subdirectory(datasette)
+add_subdirectory(tools)
+
+find_library(LIB_M m ${CMAKE_C_IMPLICIT_LINK_DIRECTORIES} )
+find_library(LIB_SDL2 SDL2 ${CMAKE_C_IMPLICIT_LINK_DIRECTORIES} )
+find_library(LIB_SDL2_IMAGE SDL2_image ${CMAKE_C_IMPLICIT_LINK_DIRECTORIES} )
+find_library(LIB_CURL curl ${CMAKE_C_IMPLICIT_LINK_DIRECTORIES} )
+find_library(LIB_PULSE_SIMPLE pulse-simple ${CMAKE_C_IMPLICIT_LINK_DIRECTORIES} )
+find_library(LIB_PULSE pulse ${CMAKE_C_IMPLICIT_LINK_DIRECTORIES} )
+find_library(LIB_ASOUND asound ${CMAKE_C_IMPLICIT_LINK_DIRECTORIES} )
+find_library(LIB_PNG png ${CMAKE_C_IMPLICIT_LINK_DIRECTORIES} )
+find_library(LIB_Z z ${CMAKE_C_IMPLICIT_LINK_DIRECTORIES} )
+
+if(FIRST_RUN)
+    set(CMAKE_XCODE_GENERATE_SCHEME ON)
+    add_executable(x64sc)
+    set(CMAKE_XCODE_GENERATE_SCHEME OFF)
+else()
+    add_executable(x64sc)
+endif()
+
+target_compile_definitions(
+    x64sc
+    PRIVATE
+        $<$<COMPILE_LANGUAGE:C>:HAVE_CONFIG_H NDEBUG _REENTRANT _REENTRANT >
+        $<$<COMPILE_LANGUAGE:CXX>:>
+        $<$<COMPILE_LANGUAGE:OBJC>:>
+    )
+
+target_include_directories(
+    x64sc
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}
+        ${CMAKE_CURRENT_SOURCE_DIR}/
+        ${CMAKE_SOURCE_DIR}/src/arch/systemheaderoverride
+        ${CMAKE_SOURCE_DIR}/src/arch/sdl
+        ${CMAKE_SOURCE_DIR}/src/arch/shared
+        ${CMAKE_SOURCE_DIR}/src
+        ${CMAKE_SOURCE_DIR}/src/c64
+        ${CMAKE_SOURCE_DIR}/src/datasette
+        ${CMAKE_SOURCE_DIR}/src/drive
+        ${CMAKE_SOURCE_DIR}/src/printerdrv
+        ${CMAKE_SOURCE_DIR}/src/fsdevice
+        ${CMAKE_SOURCE_DIR}/src/monitor
+        ${CMAKE_SOURCE_DIR}/src/plus4
+        ${CMAKE_SOURCE_DIR}/src/vic20
+        ${CMAKE_SOURCE_DIR}/src/vdrive
+        ${CMAKE_SOURCE_DIR}/src/diskimage
+        ${CMAKE_SOURCE_DIR}/src/imagecontents
+        ${CMAKE_SOURCE_DIR}/src/diag
+        ${CMAKE_SOURCE_DIR}/src/userport
+        ${CMAKE_SOURCE_DIR}/src/lib/
+        ${CMAKE_SOURCE_DIR}/src/lib/p64
+        ${CMAKE_SOURCE_DIR}/src/joyport
+        ${CMAKE_SOURCE_DIR}/src/core/rtc
+        ${CMAKE_SOURCE_DIR}/src/tapeport
+        ${CMAKE_SOURCE_DIR}/src/tape
+        ${CMAKE_SOURCE_DIR}/src/arch/shared/socketdrv
+        ${CMAKE_SOURCE_DIR}/src/hvsc
+        ${CMAKE_SOURCE_DIR}/src/lib/linenoise-ng
+        ${CMAKE_SOURCE_DIR}/src/cart
+        ${CMAKE_SOURCE_DIR}/src/arch/shared/hotkeys
+        /usr/include/SDL2
+        /usr/include/libpng16
+        /usr/include/aarch64-linux-gnu
+        /usr/include/webp
+    )
+
+target_compile_options(
+    x64sc
+    PRIVATE
+        $<$<COMPILE_LANGUAGE:C>:-Wno-deprecated-declarations -g -O3 -W -Wall -Wextra -Wformat -Wformat-signedness -Wformat-security -Wshadow -Wpointer-arith -Wmissing-prototypes -Wstrict-prototypes -Wuninitialized -Wmissing-field-initializers -Wunreachable-code -Werror=implicit-function-declaration -Wfatal-errors -Wdiscarded-qualifiers -Wno-unknown-pragmas -Wunused-but-set-variable -Wno-sign-compare -Wno-ignored-qualifiers -Wno-unused-parameter -fopenmp>
+        $<$<COMPILE_LANGUAGE:CXX>:-Wno-deprecated-declarations -g -O3 -Wall -Wformat -Wshadow -Wpointer-arith -Wuninitialized -Wunreachable-code -Wno-unused-parameter -Wfatal-errors -fopenmp -fno-exceptions>
+        $<$<COMPILE_LANGUAGE:OBJC>:-Wno-deprecated-declarations >
+    )
+
+target_link_options(
+    x64sc
+    PRIVATE
+        -Wno-deprecated-declarations -fopenmp
+    )
+
+target_sources(
+    x64sc
+    PRIVATE
+        alarm.c
+        attach.c
+        autostart.c
+        autostart-prg.c
+        cbmdos.c
+        cbmimage.c
+        charset.c
+        clipboard.c
+        cmdline.c
+        color.c
+        crc32.c
+        crt.c
+        debug.c
+        dma.c
+        event.c
+        findpath.c
+        fliplist.c
+        gcr.c
+        info.c
+        init.c
+        initcmdline.c
+        interrupt.c
+        kbdbuf.c
+        keyboard.c
+        keymap.c
+        lib.c
+        log.c
+        machine-bus.c
+        machine.c
+        main.c
+        mainlock.c
+        m3u.c
+        network.c
+        opencbmlib.c
+        palette.c
+        profiler.c
+        ram.c
+        rawfile.c
+        rawnet.c
+        resources.c
+        romset.c
+        screenshot.c
+        sha1.c
+        snapshot.c
+        socket.c
+        sound.c
+        sysfile.c
+        traps.c
+        util.c
+        vicefeatures.c
+        vsync.c
+        zfile.c
+        zipcode.c
+        midi.c
+        infocontrib.h
+        6510core.h
+        acia.h
+        alarm.h
+        attach.h
+        autostart.h
+        autostart-prg.h
+        c128ui.h
+        c64ui.h
+        cartio.h
+        cartridge.h
+        catweaselmkiii.h
+        cbm2ui.h
+        cbmdos.h
+        cbmimage.h
+        charset.h
+        cia.h
+        clipboard.h
+        cmdline.h
+        crt.h
+        color.h
+        console.h
+        crc32.h
+        debug.h
+        diskconstants.h
+        diskimage.h
+        dma.h
+        dynlib.h
+        export.h
+        fileio.h
+        findpath.h
+        fixpoint.h
+        fsdevice.h
+        flash040.h
+        flash800.h
+        fliplist.h
+        fullscreen.h
+        gcr.h
+        gfxoutput.h
+        h6809regs.h
+        hardsid.h
+        iecbus.h
+        iecdrive.h
+        imagecontents.h
+        info.h
+        init.h
+        initcmdline.h
+        interrupt.h
+        kbdbuf.h
+        keyboard.h
+        keymap.h
+        lib.h
+        log.h
+        machine-bus.h
+        machine-drive.h
+        machine-printer.h
+        machine-video.h
+        machine.h
+        main.h
+        mainc64cpu.h
+        main65816cpu.h
+        maincpu.h
+        mainlock.h
+        mem.h
+        midi.h
+        mididrv.h
+        monitor.h
+        mos6510.h
+        mos6510dtv.h
+        m3u.h
+        network.h
+        opencbmlib.h
+        palette.h
+        parallel.h
+        parsid.h
+        petui.h
+        piacore.h
+        plus4ui.h
+        profiler.h
+        profiler_data.h
+        r65c02.h
+        ram.h
+        rawfile.h
+        rawnet.h
+        resources.h
+        riot.h
+        romset.h
+        scpu64ui.h
+        screenshot.h
+        sha1.h
+        snapshot.h
+        serial.h
+        sidcart.h
+        signals.h
+        snespad.h
+        sound.h
+        sysfile.h
+        tap.h
+        tape.h
+        tpi.h
+        traps.h
+        types.h
+        uiapi.h
+        uicmdline.h
+        uicolor.h
+        uimon.h
+        usbsid.h
+        util.h
+        version.h
+        via.h
+        vic20ui.h
+        vice.h
+        vicedate.h
+        vice-event.h
+        vicesocket.h
+        vicefeatures.h
+        vicii.h
+        vicii-colorram.h
+        video.h
+        viewport.h
+        vsidui.h
+        vsync.h
+        vsyncapi.h
+        wdc65816.h
+        z80regs.h
+        zfile.h
+        zipcode.h
+    )
+
+target_link_libraries(
+    x64sc
+    PRIVATE
+    	libarchdep libtapeport libc64sc libc64cartsystem libc64cart libc64commoncart libdatasette libdriveiec libdriveiecieee libdriveiecc64exp libdriveieee libdrive libdrivetcbm libp64 libiecbus libparallel libvdrive libsid libmonitor libjoyport libsamplerdrv libsounddrv libmididrv libsocketdrv libhwsiddrv libgfxoutputdrv libprinterdrv libdiskimage libfsdevice libtape libfileio libserial libcore librs232drv libviciisc libraster libuserport libdiag librtc libvideo libarch libimagecontents libc64scstubs libresid libhvsc libhotkeys libzmbv libarch libarchdep liblinenoiseng ${LIB_M} ${LIB_SDL2} ${LIB_SDL2_IMAGE} ${LIB_SDL2} ${LIB_CURL} ${LIB_PULSE_SIMPLE} ${LIB_PULSE} ${LIB_ASOUND} ${LIB_PNG} ${LIB_Z}
+    )
+
+if(FIRST_RUN)
+    set(CMAKE_XCODE_GENERATE_SCHEME ON)
+    add_executable(x128)
+    set(CMAKE_XCODE_GENERATE_SCHEME OFF)
+else()
+    add_executable(x128)
+endif()
+
+target_compile_definitions(
+    x128
+    PRIVATE
+        $<$<COMPILE_LANGUAGE:C>:HAVE_CONFIG_H NDEBUG _REENTRANT _REENTRANT >
+        $<$<COMPILE_LANGUAGE:CXX>:>
+        $<$<COMPILE_LANGUAGE:OBJC>:>
+    )
+
+target_include_directories(
+    x128
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}
+        ${CMAKE_CURRENT_SOURCE_DIR}/
+        ${CMAKE_SOURCE_DIR}/src/arch/systemheaderoverride
+        ${CMAKE_SOURCE_DIR}/src/arch/sdl
+        ${CMAKE_SOURCE_DIR}/src/arch/shared
+        ${CMAKE_SOURCE_DIR}/src
+        ${CMAKE_SOURCE_DIR}/src/c64
+        ${CMAKE_SOURCE_DIR}/src/datasette
+        ${CMAKE_SOURCE_DIR}/src/drive
+        ${CMAKE_SOURCE_DIR}/src/printerdrv
+        ${CMAKE_SOURCE_DIR}/src/fsdevice
+        ${CMAKE_SOURCE_DIR}/src/monitor
+        ${CMAKE_SOURCE_DIR}/src/plus4
+        ${CMAKE_SOURCE_DIR}/src/vic20
+        ${CMAKE_SOURCE_DIR}/src/vdrive
+        ${CMAKE_SOURCE_DIR}/src/diskimage
+        ${CMAKE_SOURCE_DIR}/src/imagecontents
+        ${CMAKE_SOURCE_DIR}/src/diag
+        ${CMAKE_SOURCE_DIR}/src/userport
+        ${CMAKE_SOURCE_DIR}/src/lib/
+        ${CMAKE_SOURCE_DIR}/src/lib/p64
+        ${CMAKE_SOURCE_DIR}/src/joyport
+        ${CMAKE_SOURCE_DIR}/src/core/rtc
+        ${CMAKE_SOURCE_DIR}/src/tapeport
+        ${CMAKE_SOURCE_DIR}/src/tape
+        ${CMAKE_SOURCE_DIR}/src/arch/shared/socketdrv
+        ${CMAKE_SOURCE_DIR}/src/hvsc
+        ${CMAKE_SOURCE_DIR}/src/lib/linenoise-ng
+        ${CMAKE_SOURCE_DIR}/src/cart
+        ${CMAKE_SOURCE_DIR}/src/arch/shared/hotkeys
+        /usr/include/SDL2
+        /usr/include/libpng16
+        /usr/include/aarch64-linux-gnu
+        /usr/include/webp
+    )
+
+target_compile_options(
+    x128
+    PRIVATE
+        $<$<COMPILE_LANGUAGE:C>:-Wno-deprecated-declarations -g -O3 -W -Wall -Wextra -Wformat -Wformat-signedness -Wformat-security -Wshadow -Wpointer-arith -Wmissing-prototypes -Wstrict-prototypes -Wuninitialized -Wmissing-field-initializers -Wunreachable-code -Werror=implicit-function-declaration -Wfatal-errors -Wdiscarded-qualifiers -Wno-unknown-pragmas -Wunused-but-set-variable -Wno-sign-compare -Wno-ignored-qualifiers -Wno-unused-parameter -fopenmp>
+        $<$<COMPILE_LANGUAGE:CXX>:-Wno-deprecated-declarations -g -O3 -Wall -Wformat -Wshadow -Wpointer-arith -Wuninitialized -Wunreachable-code -Wno-unused-parameter -Wfatal-errors -fopenmp -fno-exceptions>
+        $<$<COMPILE_LANGUAGE:OBJC>:-Wno-deprecated-declarations >
+    )
+
+target_link_options(
+    x128
+    PRIVATE
+        -Wno-deprecated-declarations -fopenmp
+    )
+
+target_sources(
+    x128
+    PRIVATE
+        alarm.c
+        attach.c
+        autostart.c
+        autostart-prg.c
+        cbmdos.c
+        cbmimage.c
+        charset.c
+        clipboard.c
+        cmdline.c
+        color.c
+        crc32.c
+        crt.c
+        debug.c
+        dma.c
+        event.c
+        findpath.c
+        fliplist.c
+        gcr.c
+        info.c
+        init.c
+        initcmdline.c
+        interrupt.c
+        kbdbuf.c
+        keyboard.c
+        keymap.c
+        lib.c
+        log.c
+        machine-bus.c
+        machine.c
+        main.c
+        mainlock.c
+        m3u.c
+        network.c
+        opencbmlib.c
+        palette.c
+        profiler.c
+        ram.c
+        rawfile.c
+        rawnet.c
+        resources.c
+        romset.c
+        screenshot.c
+        sha1.c
+        snapshot.c
+        socket.c
+        sound.c
+        sysfile.c
+        traps.c
+        util.c
+        vicefeatures.c
+        vsync.c
+        zfile.c
+        zipcode.c
+        midi.c
+        infocontrib.h
+        6510core.h
+        acia.h
+        alarm.h
+        attach.h
+        autostart.h
+        autostart-prg.h
+        c128ui.h
+        c64ui.h
+        cartio.h
+        cartridge.h
+        catweaselmkiii.h
+        cbm2ui.h
+        cbmdos.h
+        cbmimage.h
+        charset.h
+        cia.h
+        clipboard.h
+        cmdline.h
+        crt.h
+        color.h
+        console.h
+        crc32.h
+        debug.h
+        diskconstants.h
+        diskimage.h
+        dma.h
+        dynlib.h
+        export.h
+        fileio.h
+        findpath.h
+        fixpoint.h
+        fsdevice.h
+        flash040.h
+        flash800.h
+        fliplist.h
+        fullscreen.h
+        gcr.h
+        gfxoutput.h
+        h6809regs.h
+        hardsid.h
+        iecbus.h
+        iecdrive.h
+        imagecontents.h
+        info.h
+        init.h
+        initcmdline.h
+        interrupt.h
+        kbdbuf.h
+        keyboard.h
+        keymap.h
+        lib.h
+        log.h
+        machine-bus.h
+        machine-drive.h
+        machine-printer.h
+        machine-video.h
+        machine.h
+        main.h
+        mainc64cpu.h
+        main65816cpu.h
+        maincpu.h
+        mainlock.h
+        mem.h
+        midi.h
+        mididrv.h
+        monitor.h
+        mos6510.h
+        mos6510dtv.h
+        m3u.h
+        network.h
+        opencbmlib.h
+        palette.h
+        parallel.h
+        parsid.h
+        petui.h
+        piacore.h
+        plus4ui.h
+        profiler.h
+        profiler_data.h
+        r65c02.h
+        ram.h
+        rawfile.h
+        rawnet.h
+        resources.h
+        riot.h
+        romset.h
+        scpu64ui.h
+        screenshot.h
+        sha1.h
+        snapshot.h
+        serial.h
+        sidcart.h
+        signals.h
+        snespad.h
+        sound.h
+        sysfile.h
+        tap.h
+        tape.h
+        tpi.h
+        traps.h
+        types.h
+        uiapi.h
+        uicmdline.h
+        uicolor.h
+        uimon.h
+        usbsid.h
+        util.h
+        version.h
+        via.h
+        vic20ui.h
+        vice.h
+        vicedate.h
+        vice-event.h
+        vicesocket.h
+        vicefeatures.h
+        vicii.h
+        vicii-colorram.h
+        video.h
+        viewport.h
+        vsidui.h
+        vsync.h
+        vsyncapi.h
+        wdc65816.h
+        z80regs.h
+        zfile.h
+        zipcode.h
+    )
+
+target_link_libraries(
+    x128
+    PRIVATE
+    	libarchdep libtapeport libc128 libc64cartsystem libc128cartsystem libc64cart libc64commoncart libc64c128 libdatasette libdriveiec libdriveiec128dcr libdriveiecieee libdriveiecc64exp libdriveieee libdrive libdrivetcbm libp64 libiecbus libparallel libvdrive libsid libmonitor libjoyport libsamplerdrv libsounddrv libmididrv libsocketdrv libhwsiddrv libgfxoutputdrv libprinterdrv libdiskimage libfsdevice libtape libfileio libserial libcore librs232drv libvicii libvdc libraster libdiag libuserport librtc libvideo libarch libimagecontents libc128stubs libresid libhvsc libhotkeys libzmbv libarch libarchdep liblinenoiseng ${LIB_M} ${LIB_SDL2} ${LIB_SDL2_IMAGE} ${LIB_SDL2} ${LIB_CURL} ${LIB_PULSE_SIMPLE} ${LIB_PULSE} ${LIB_ASOUND} ${LIB_PNG} ${LIB_Z}
+    )
+
+if(FIRST_RUN)
+    set(CMAKE_XCODE_GENERATE_SCHEME ON)
+    add_executable(x64dtv)
+    set(CMAKE_XCODE_GENERATE_SCHEME OFF)
+else()
+    add_executable(x64dtv)
+endif()
+
+target_compile_definitions(
+    x64dtv
+    PRIVATE
+        $<$<COMPILE_LANGUAGE:C>:HAVE_CONFIG_H NDEBUG _REENTRANT _REENTRANT >
+        $<$<COMPILE_LANGUAGE:CXX>:>
+        $<$<COMPILE_LANGUAGE:OBJC>:>
+    )
+
+target_include_directories(
+    x64dtv
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}
+        ${CMAKE_CURRENT_SOURCE_DIR}/
+        ${CMAKE_SOURCE_DIR}/src/arch/systemheaderoverride
+        ${CMAKE_SOURCE_DIR}/src/arch/sdl
+        ${CMAKE_SOURCE_DIR}/src/arch/shared
+        ${CMAKE_SOURCE_DIR}/src
+        ${CMAKE_SOURCE_DIR}/src/c64
+        ${CMAKE_SOURCE_DIR}/src/datasette
+        ${CMAKE_SOURCE_DIR}/src/drive
+        ${CMAKE_SOURCE_DIR}/src/printerdrv
+        ${CMAKE_SOURCE_DIR}/src/fsdevice
+        ${CMAKE_SOURCE_DIR}/src/monitor
+        ${CMAKE_SOURCE_DIR}/src/plus4
+        ${CMAKE_SOURCE_DIR}/src/vic20
+        ${CMAKE_SOURCE_DIR}/src/vdrive
+        ${CMAKE_SOURCE_DIR}/src/diskimage
+        ${CMAKE_SOURCE_DIR}/src/imagecontents
+        ${CMAKE_SOURCE_DIR}/src/diag
+        ${CMAKE_SOURCE_DIR}/src/userport
+        ${CMAKE_SOURCE_DIR}/src/lib/
+        ${CMAKE_SOURCE_DIR}/src/lib/p64
+        ${CMAKE_SOURCE_DIR}/src/joyport
+        ${CMAKE_SOURCE_DIR}/src/core/rtc
+        ${CMAKE_SOURCE_DIR}/src/tapeport
+        ${CMAKE_SOURCE_DIR}/src/tape
+        ${CMAKE_SOURCE_DIR}/src/arch/shared/socketdrv
+        ${CMAKE_SOURCE_DIR}/src/hvsc
+        ${CMAKE_SOURCE_DIR}/src/lib/linenoise-ng
+        ${CMAKE_SOURCE_DIR}/src/cart
+        ${CMAKE_SOURCE_DIR}/src/arch/shared/hotkeys
+        /usr/include/SDL2
+        /usr/include/libpng16
+        /usr/include/aarch64-linux-gnu
+        /usr/include/webp
+    )
+
+target_compile_options(
+    x64dtv
+    PRIVATE
+        $<$<COMPILE_LANGUAGE:C>:-Wno-deprecated-declarations -g -O3 -W -Wall -Wextra -Wformat -Wformat-signedness -Wformat-security -Wshadow -Wpointer-arith -Wmissing-prototypes -Wstrict-prototypes -Wuninitialized -Wmissing-field-initializers -Wunreachable-code -Werror=implicit-function-declaration -Wfatal-errors -Wdiscarded-qualifiers -Wno-unknown-pragmas -Wunused-but-set-variable -Wno-sign-compare -Wno-ignored-qualifiers -Wno-unused-parameter -fopenmp>
+        $<$<COMPILE_LANGUAGE:CXX>:-Wno-deprecated-declarations -g -O3 -Wall -Wformat -Wshadow -Wpointer-arith -Wuninitialized -Wunreachable-code -Wno-unused-parameter -Wfatal-errors -fopenmp -fno-exceptions>
+        $<$<COMPILE_LANGUAGE:OBJC>:-Wno-deprecated-declarations >
+    )
+
+target_link_options(
+    x64dtv
+    PRIVATE
+        -Wno-deprecated-declarations -fopenmp
+    )
+
+target_sources(
+    x64dtv
+    PRIVATE
+        alarm.c
+        attach.c
+        autostart.c
+        autostart-prg.c
+        cbmdos.c
+        cbmimage.c
+        charset.c
+        clipboard.c
+        cmdline.c
+        color.c
+        crc32.c
+        crt.c
+        debug.c
+        dma.c
+        event.c
+        findpath.c
+        fliplist.c
+        gcr.c
+        info.c
+        init.c
+        initcmdline.c
+        interrupt.c
+        kbdbuf.c
+        keyboard.c
+        keymap.c
+        lib.c
+        log.c
+        machine-bus.c
+        machine.c
+        main.c
+        mainlock.c
+        m3u.c
+        network.c
+        opencbmlib.c
+        palette.c
+        profiler.c
+        ram.c
+        rawfile.c
+        rawnet.c
+        resources.c
+        romset.c
+        screenshot.c
+        sha1.c
+        snapshot.c
+        socket.c
+        sound.c
+        sysfile.c
+        traps.c
+        util.c
+        vicefeatures.c
+        vsync.c
+        zfile.c
+        zipcode.c
+        infocontrib.h
+        6510core.h
+        acia.h
+        alarm.h
+        attach.h
+        autostart.h
+        autostart-prg.h
+        c128ui.h
+        c64ui.h
+        cartio.h
+        cartridge.h
+        catweaselmkiii.h
+        cbm2ui.h
+        cbmdos.h
+        cbmimage.h
+        charset.h
+        cia.h
+        clipboard.h
+        cmdline.h
+        crt.h
+        color.h
+        console.h
+        crc32.h
+        debug.h
+        diskconstants.h
+        diskimage.h
+        dma.h
+        dynlib.h
+        export.h
+        fileio.h
+        findpath.h
+        fixpoint.h
+        fsdevice.h
+        flash040.h
+        flash800.h
+        fliplist.h
+        fullscreen.h
+        gcr.h
+        gfxoutput.h
+        h6809regs.h
+        hardsid.h
+        iecbus.h
+        iecdrive.h
+        imagecontents.h
+        info.h
+        init.h
+        initcmdline.h
+        interrupt.h
+        kbdbuf.h
+        keyboard.h
+        keymap.h
+        lib.h
+        log.h
+        machine-bus.h
+        machine-drive.h
+        machine-printer.h
+        machine-video.h
+        machine.h
+        main.h
+        mainc64cpu.h
+        main65816cpu.h
+        maincpu.h
+        mainlock.h
+        mem.h
+        midi.h
+        mididrv.h
+        monitor.h
+        mos6510.h
+        mos6510dtv.h
+        m3u.h
+        network.h
+        opencbmlib.h
+        palette.h
+        parallel.h
+        parsid.h
+        petui.h
+        piacore.h
+        plus4ui.h
+        profiler.h
+        profiler_data.h
+        r65c02.h
+        ram.h
+        rawfile.h
+        rawnet.h
+        resources.h
+        riot.h
+        romset.h
+        scpu64ui.h
+        screenshot.h
+        sha1.h
+        snapshot.h
+        serial.h
+        sidcart.h
+        signals.h
+        snespad.h
+        sound.h
+        sysfile.h
+        tap.h
+        tape.h
+        tpi.h
+        traps.h
+        types.h
+        uiapi.h
+        uicmdline.h
+        uicolor.h
+        uimon.h
+        usbsid.h
+        util.h
+        version.h
+        via.h
+        vic20ui.h
+        vice.h
+        vicedate.h
+        vice-event.h
+        vicesocket.h
+        vicefeatures.h
+        vicii.h
+        vicii-colorram.h
+        video.h
+        viewport.h
+        vsidui.h
+        vsync.h
+        vsyncapi.h
+        wdc65816.h
+        z80regs.h
+        zfile.h
+        zipcode.h
+    )
+
+target_link_libraries(
+    x64dtv
+    PRIVATE
+    	libarchdep libc64dtv libc64c64dtv libdatasette libdriveiec libdriveiecieee libdriveiecc64exp libdriveieee libdrive libdrivetcbm libp64 libiecbus libparallel libvdrive libsid_dtv libmonitor libjoyport libsamplerdrv libsounddrv libmididrv libsocketdrv libhwsiddrv libgfxoutputdrv libprinterdrv libdiskimage libfsdevice libtape libfileio libserial libcore libviciidtv libraster libvideo libarch libimagecontents libresiddtv libuserport libc64dtvstubs libdiag libjoyport librtc libhvsc libhotkeys libzmbv libarch libarchdep liblinenoiseng ${LIB_M} ${LIB_SDL2} ${LIB_SDL2_IMAGE} ${LIB_SDL2} ${LIB_CURL} ${LIB_PULSE_SIMPLE} ${LIB_PULSE} ${LIB_ASOUND} ${LIB_PNG} ${LIB_Z}
+    )
+
+if(FIRST_RUN)
+    set(CMAKE_XCODE_GENERATE_SCHEME ON)
+    add_executable(xscpu64)
+    set(CMAKE_XCODE_GENERATE_SCHEME OFF)
+else()
+    add_executable(xscpu64)
+endif()
+
+target_compile_definitions(
+    xscpu64
+    PRIVATE
+        $<$<COMPILE_LANGUAGE:C>:HAVE_CONFIG_H NDEBUG _REENTRANT _REENTRANT >
+        $<$<COMPILE_LANGUAGE:CXX>:>
+        $<$<COMPILE_LANGUAGE:OBJC>:>
+    )
+
+target_include_directories(
+    xscpu64
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}
+        ${CMAKE_CURRENT_SOURCE_DIR}/
+        ${CMAKE_SOURCE_DIR}/src/arch/systemheaderoverride
+        ${CMAKE_SOURCE_DIR}/src/arch/sdl
+        ${CMAKE_SOURCE_DIR}/src/arch/shared
+        ${CMAKE_SOURCE_DIR}/src
+        ${CMAKE_SOURCE_DIR}/src/c64
+        ${CMAKE_SOURCE_DIR}/src/datasette
+        ${CMAKE_SOURCE_DIR}/src/drive
+        ${CMAKE_SOURCE_DIR}/src/printerdrv
+        ${CMAKE_SOURCE_DIR}/src/fsdevice
+        ${CMAKE_SOURCE_DIR}/src/monitor
+        ${CMAKE_SOURCE_DIR}/src/plus4
+        ${CMAKE_SOURCE_DIR}/src/vic20
+        ${CMAKE_SOURCE_DIR}/src/vdrive
+        ${CMAKE_SOURCE_DIR}/src/diskimage
+        ${CMAKE_SOURCE_DIR}/src/imagecontents
+        ${CMAKE_SOURCE_DIR}/src/diag
+        ${CMAKE_SOURCE_DIR}/src/userport
+        ${CMAKE_SOURCE_DIR}/src/lib/
+        ${CMAKE_SOURCE_DIR}/src/lib/p64
+        ${CMAKE_SOURCE_DIR}/src/joyport
+        ${CMAKE_SOURCE_DIR}/src/core/rtc
+        ${CMAKE_SOURCE_DIR}/src/tapeport
+        ${CMAKE_SOURCE_DIR}/src/tape
+        ${CMAKE_SOURCE_DIR}/src/arch/shared/socketdrv
+        ${CMAKE_SOURCE_DIR}/src/hvsc
+        ${CMAKE_SOURCE_DIR}/src/lib/linenoise-ng
+        ${CMAKE_SOURCE_DIR}/src/cart
+        ${CMAKE_SOURCE_DIR}/src/arch/shared/hotkeys
+        /usr/include/SDL2
+        /usr/include/libpng16
+        /usr/include/aarch64-linux-gnu
+        /usr/include/webp
+    )
+
+target_compile_options(
+    xscpu64
+    PRIVATE
+        $<$<COMPILE_LANGUAGE:C>:-Wno-deprecated-declarations -g -O3 -W -Wall -Wextra -Wformat -Wformat-signedness -Wformat-security -Wshadow -Wpointer-arith -Wmissing-prototypes -Wstrict-prototypes -Wuninitialized -Wmissing-field-initializers -Wunreachable-code -Werror=implicit-function-declaration -Wfatal-errors -Wdiscarded-qualifiers -Wno-unknown-pragmas -Wunused-but-set-variable -Wno-sign-compare -Wno-ignored-qualifiers -Wno-unused-parameter -fopenmp>
+        $<$<COMPILE_LANGUAGE:CXX>:-Wno-deprecated-declarations -g -O3 -Wall -Wformat -Wshadow -Wpointer-arith -Wuninitialized -Wunreachable-code -Wno-unused-parameter -Wfatal-errors -fopenmp -fno-exceptions>
+        $<$<COMPILE_LANGUAGE:OBJC>:-Wno-deprecated-declarations >
+    )
+
+target_link_options(
+    xscpu64
+    PRIVATE
+        -Wno-deprecated-declarations -fopenmp
+    )
+
+target_sources(
+    xscpu64
+    PRIVATE
+        alarm.c
+        attach.c
+        autostart.c
+        autostart-prg.c
+        cbmdos.c
+        cbmimage.c
+        charset.c
+        clipboard.c
+        cmdline.c
+        color.c
+        crc32.c
+        crt.c
+        debug.c
+        dma.c
+        event.c
+        findpath.c
+        fliplist.c
+        gcr.c
+        info.c
+        init.c
+        initcmdline.c
+        interrupt.c
+        kbdbuf.c
+        keyboard.c
+        keymap.c
+        lib.c
+        log.c
+        machine-bus.c
+        machine.c
+        main.c
+        mainlock.c
+        m3u.c
+        network.c
+        opencbmlib.c
+        palette.c
+        profiler.c
+        ram.c
+        rawfile.c
+        rawnet.c
+        resources.c
+        romset.c
+        screenshot.c
+        sha1.c
+        snapshot.c
+        socket.c
+        sound.c
+        sysfile.c
+        traps.c
+        util.c
+        vicefeatures.c
+        vsync.c
+        zfile.c
+        zipcode.c
+        midi.c
+        infocontrib.h
+        6510core.h
+        acia.h
+        alarm.h
+        attach.h
+        autostart.h
+        autostart-prg.h
+        c128ui.h
+        c64ui.h
+        cartio.h
+        cartridge.h
+        catweaselmkiii.h
+        cbm2ui.h
+        cbmdos.h
+        cbmimage.h
+        charset.h
+        cia.h
+        clipboard.h
+        cmdline.h
+        crt.h
+        color.h
+        console.h
+        crc32.h
+        debug.h
+        diskconstants.h
+        diskimage.h
+        dma.h
+        dynlib.h
+        export.h
+        fileio.h
+        findpath.h
+        fixpoint.h
+        fsdevice.h
+        flash040.h
+        flash800.h
+        fliplist.h
+        fullscreen.h
+        gcr.h
+        gfxoutput.h
+        h6809regs.h
+        hardsid.h
+        iecbus.h
+        iecdrive.h
+        imagecontents.h
+        info.h
+        init.h
+        initcmdline.h
+        interrupt.h
+        kbdbuf.h
+        keyboard.h
+        keymap.h
+        lib.h
+        log.h
+        machine-bus.h
+        machine-drive.h
+        machine-printer.h
+        machine-video.h
+        machine.h
+        main.h
+        mainc64cpu.h
+        main65816cpu.h
+        maincpu.h
+        mainlock.h
+        mem.h
+        midi.h
+        mididrv.h
+        monitor.h
+        mos6510.h
+        mos6510dtv.h
+        m3u.h
+        network.h
+        opencbmlib.h
+        palette.h
+        parallel.h
+        parsid.h
+        petui.h
+        piacore.h
+        plus4ui.h
+        profiler.h
+        profiler_data.h
+        r65c02.h
+        ram.h
+        rawfile.h
+        rawnet.h
+        resources.h
+        riot.h
+        romset.h
+        scpu64ui.h
+        screenshot.h
+        sha1.h
+        snapshot.h
+        serial.h
+        sidcart.h
+        signals.h
+        snespad.h
+        sound.h
+        sysfile.h
+        tap.h
+        tape.h
+        tpi.h
+        traps.h
+        types.h
+        uiapi.h
+        uicmdline.h
+        uicolor.h
+        uimon.h
+        usbsid.h
+        util.h
+        version.h
+        via.h
+        vic20ui.h
+        vice.h
+        vicedate.h
+        vice-event.h
+        vicesocket.h
+        vicefeatures.h
+        vicii.h
+        vicii-colorram.h
+        video.h
+        viewport.h
+        vsidui.h
+        vsync.h
+        vsyncapi.h
+        wdc65816.h
+        z80regs.h
+        zfile.h
+        zipcode.h
+    )
+
+target_link_libraries(
+    xscpu64
+    PRIVATE
+    	libarchdep libscpu64 libc64cartsystem libc64cart libc64commoncart libscpu64stubs libc64scpu64 libdatasette libdriveiec libdriveiecieee libdriveiecc64exp libdriveieee libdrive libdrivetcbm libp64 libiecbus libparallel libvdrive libsid libmonitor libjoyport libsamplerdrv libsounddrv libmididrv libsocketdrv libhwsiddrv libgfxoutputdrv libprinterdrv libdiskimage libfsdevice libtape libfileio libserial libcore librs232drv libviciisc libraster libuserport libdiag librtc libvideo libarch libimagecontents libresid libhvsc libhotkeys libzmbv libarch libarchdep liblinenoiseng ${LIB_M} ${LIB_SDL2} ${LIB_SDL2_IMAGE} ${LIB_SDL2} ${LIB_CURL} ${LIB_PULSE_SIMPLE} ${LIB_PULSE} ${LIB_ASOUND} ${LIB_PNG} ${LIB_Z}
+    )
+
+if(FIRST_RUN)
+    set(CMAKE_XCODE_GENERATE_SCHEME ON)
+    add_executable(xvic)
+    set(CMAKE_XCODE_GENERATE_SCHEME OFF)
+else()
+    add_executable(xvic)
+endif()
+
+target_compile_definitions(
+    xvic
+    PRIVATE
+        $<$<COMPILE_LANGUAGE:C>:HAVE_CONFIG_H NDEBUG _REENTRANT _REENTRANT >
+        $<$<COMPILE_LANGUAGE:CXX>:>
+        $<$<COMPILE_LANGUAGE:OBJC>:>
+    )
+
+target_include_directories(
+    xvic
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}
+        ${CMAKE_CURRENT_SOURCE_DIR}/
+        ${CMAKE_SOURCE_DIR}/src/arch/systemheaderoverride
+        ${CMAKE_SOURCE_DIR}/src/arch/sdl
+        ${CMAKE_SOURCE_DIR}/src/arch/shared
+        ${CMAKE_SOURCE_DIR}/src
+        ${CMAKE_SOURCE_DIR}/src/c64
+        ${CMAKE_SOURCE_DIR}/src/datasette
+        ${CMAKE_SOURCE_DIR}/src/drive
+        ${CMAKE_SOURCE_DIR}/src/printerdrv
+        ${CMAKE_SOURCE_DIR}/src/fsdevice
+        ${CMAKE_SOURCE_DIR}/src/monitor
+        ${CMAKE_SOURCE_DIR}/src/plus4
+        ${CMAKE_SOURCE_DIR}/src/vic20
+        ${CMAKE_SOURCE_DIR}/src/vdrive
+        ${CMAKE_SOURCE_DIR}/src/diskimage
+        ${CMAKE_SOURCE_DIR}/src/imagecontents
+        ${CMAKE_SOURCE_DIR}/src/diag
+        ${CMAKE_SOURCE_DIR}/src/userport
+        ${CMAKE_SOURCE_DIR}/src/lib/
+        ${CMAKE_SOURCE_DIR}/src/lib/p64
+        ${CMAKE_SOURCE_DIR}/src/joyport
+        ${CMAKE_SOURCE_DIR}/src/core/rtc
+        ${CMAKE_SOURCE_DIR}/src/tapeport
+        ${CMAKE_SOURCE_DIR}/src/tape
+        ${CMAKE_SOURCE_DIR}/src/arch/shared/socketdrv
+        ${CMAKE_SOURCE_DIR}/src/hvsc
+        ${CMAKE_SOURCE_DIR}/src/lib/linenoise-ng
+        ${CMAKE_SOURCE_DIR}/src/cart
+        ${CMAKE_SOURCE_DIR}/src/arch/shared/hotkeys
+        /usr/include/SDL2
+        /usr/include/libpng16
+        /usr/include/aarch64-linux-gnu
+        /usr/include/webp
+    )
+
+target_compile_options(
+    xvic
+    PRIVATE
+        $<$<COMPILE_LANGUAGE:C>:-Wno-deprecated-declarations -g -O3 -W -Wall -Wextra -Wformat -Wformat-signedness -Wformat-security -Wshadow -Wpointer-arith -Wmissing-prototypes -Wstrict-prototypes -Wuninitialized -Wmissing-field-initializers -Wunreachable-code -Werror=implicit-function-declaration -Wfatal-errors -Wdiscarded-qualifiers -Wno-unknown-pragmas -Wunused-but-set-variable -Wno-sign-compare -Wno-ignored-qualifiers -Wno-unused-parameter -fopenmp>
+        $<$<COMPILE_LANGUAGE:CXX>:-Wno-deprecated-declarations -g -O3 -Wall -Wformat -Wshadow -Wpointer-arith -Wuninitialized -Wunreachable-code -Wno-unused-parameter -Wfatal-errors -fopenmp -fno-exceptions>
+        $<$<COMPILE_LANGUAGE:OBJC>:-Wno-deprecated-declarations >
+    )
+
+target_link_options(
+    xvic
+    PRIVATE
+        -Wno-deprecated-declarations -fopenmp
+    )
+
+target_sources(
+    xvic
+    PRIVATE
+        alarm.c
+        attach.c
+        autostart.c
+        autostart-prg.c
+        cbmdos.c
+        cbmimage.c
+        charset.c
+        clipboard.c
+        cmdline.c
+        color.c
+        crc32.c
+        crt.c
+        debug.c
+        dma.c
+        event.c
+        findpath.c
+        fliplist.c
+        gcr.c
+        info.c
+        init.c
+        initcmdline.c
+        interrupt.c
+        kbdbuf.c
+        keyboard.c
+        keymap.c
+        lib.c
+        log.c
+        machine-bus.c
+        machine.c
+        main.c
+        mainlock.c
+        m3u.c
+        network.c
+        opencbmlib.c
+        palette.c
+        profiler.c
+        ram.c
+        rawfile.c
+        rawnet.c
+        resources.c
+        romset.c
+        screenshot.c
+        sha1.c
+        snapshot.c
+        socket.c
+        sound.c
+        sysfile.c
+        traps.c
+        util.c
+        vicefeatures.c
+        vsync.c
+        zfile.c
+        zipcode.c
+        midi.c
+        infocontrib.h
+        6510core.h
+        acia.h
+        alarm.h
+        attach.h
+        autostart.h
+        autostart-prg.h
+        c128ui.h
+        c64ui.h
+        cartio.h
+        cartridge.h
+        catweaselmkiii.h
+        cbm2ui.h
+        cbmdos.h
+        cbmimage.h
+        charset.h
+        cia.h
+        clipboard.h
+        cmdline.h
+        crt.h
+        color.h
+        console.h
+        crc32.h
+        debug.h
+        diskconstants.h
+        diskimage.h
+        dma.h
+        dynlib.h
+        export.h
+        fileio.h
+        findpath.h
+        fixpoint.h
+        fsdevice.h
+        flash040.h
+        flash800.h
+        fliplist.h
+        fullscreen.h
+        gcr.h
+        gfxoutput.h
+        h6809regs.h
+        hardsid.h
+        iecbus.h
+        iecdrive.h
+        imagecontents.h
+        info.h
+        init.h
+        initcmdline.h
+        interrupt.h
+        kbdbuf.h
+        keyboard.h
+        keymap.h
+        lib.h
+        log.h
+        machine-bus.h
+        machine-drive.h
+        machine-printer.h
+        machine-video.h
+        machine.h
+        main.h
+        mainc64cpu.h
+        main65816cpu.h
+        maincpu.h
+        mainlock.h
+        mem.h
+        midi.h
+        mididrv.h
+        monitor.h
+        mos6510.h
+        mos6510dtv.h
+        m3u.h
+        network.h
+        opencbmlib.h
+        palette.h
+        parallel.h
+        parsid.h
+        petui.h
+        piacore.h
+        plus4ui.h
+        profiler.h
+        profiler_data.h
+        r65c02.h
+        ram.h
+        rawfile.h
+        rawnet.h
+        resources.h
+        riot.h
+        romset.h
+        scpu64ui.h
+        screenshot.h
+        sha1.h
+        snapshot.h
+        serial.h
+        sidcart.h
+        signals.h
+        snespad.h
+        sound.h
+        sysfile.h
+        tap.h
+        tape.h
+        tpi.h
+        traps.h
+        types.h
+        uiapi.h
+        uicmdline.h
+        uicolor.h
+        uimon.h
+        usbsid.h
+        util.h
+        version.h
+        via.h
+        vic20ui.h
+        vice.h
+        vicedate.h
+        vice-event.h
+        vicesocket.h
+        vicefeatures.h
+        vicii.h
+        vicii-colorram.h
+        video.h
+        viewport.h
+        vsidui.h
+        vsync.h
+        vsyncapi.h
+        wdc65816.h
+        z80regs.h
+        zfile.h
+        zipcode.h
+    )
+
+target_link_libraries(
+    xvic
+    PRIVATE
+    	libarchdep libtapeport libdatasette libvic20cart libvic20 libc64commoncart libmascuerade libdriveiec libdriveiecieee libdriveieee libdrive libdrivetcbm libp64 libiecbus libparallel libvdrive libmonitor libsid libjoyport libsamplerdrv libsounddrv libmididrv libsocketdrv libhwsiddrv libgfxoutputdrv libprinterdrv libdiskimage libfsdevice libtape libfileio libserial libcore librs232drv libraster libuserport libdiag librtc libvideo libarch libimagecontents libvic20stubs libresid libhvsc libhotkeys libzmbv libarch libarchdep liblinenoiseng libmascuerade ${LIB_M} ${LIB_SDL2} ${LIB_SDL2_IMAGE} ${LIB_SDL2} ${LIB_CURL} ${LIB_PULSE_SIMPLE} ${LIB_PULSE} ${LIB_ASOUND} ${LIB_PNG} ${LIB_Z}
+    )
+
+if(FIRST_RUN)
+    set(CMAKE_XCODE_GENERATE_SCHEME ON)
+    add_executable(xpet)
+    set(CMAKE_XCODE_GENERATE_SCHEME OFF)
+else()
+    add_executable(xpet)
+endif()
+
+target_compile_definitions(
+    xpet
+    PRIVATE
+        $<$<COMPILE_LANGUAGE:C>:HAVE_CONFIG_H NDEBUG _REENTRANT _REENTRANT >
+        $<$<COMPILE_LANGUAGE:CXX>:>
+        $<$<COMPILE_LANGUAGE:OBJC>:>
+    )
+
+target_include_directories(
+    xpet
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}
+        ${CMAKE_CURRENT_SOURCE_DIR}/
+        ${CMAKE_SOURCE_DIR}/src/arch/systemheaderoverride
+        ${CMAKE_SOURCE_DIR}/src/arch/sdl
+        ${CMAKE_SOURCE_DIR}/src/arch/shared
+        ${CMAKE_SOURCE_DIR}/src
+        ${CMAKE_SOURCE_DIR}/src/c64
+        ${CMAKE_SOURCE_DIR}/src/datasette
+        ${CMAKE_SOURCE_DIR}/src/drive
+        ${CMAKE_SOURCE_DIR}/src/printerdrv
+        ${CMAKE_SOURCE_DIR}/src/fsdevice
+        ${CMAKE_SOURCE_DIR}/src/monitor
+        ${CMAKE_SOURCE_DIR}/src/plus4
+        ${CMAKE_SOURCE_DIR}/src/vic20
+        ${CMAKE_SOURCE_DIR}/src/vdrive
+        ${CMAKE_SOURCE_DIR}/src/diskimage
+        ${CMAKE_SOURCE_DIR}/src/imagecontents
+        ${CMAKE_SOURCE_DIR}/src/diag
+        ${CMAKE_SOURCE_DIR}/src/userport
+        ${CMAKE_SOURCE_DIR}/src/lib/
+        ${CMAKE_SOURCE_DIR}/src/lib/p64
+        ${CMAKE_SOURCE_DIR}/src/joyport
+        ${CMAKE_SOURCE_DIR}/src/core/rtc
+        ${CMAKE_SOURCE_DIR}/src/tapeport
+        ${CMAKE_SOURCE_DIR}/src/tape
+        ${CMAKE_SOURCE_DIR}/src/arch/shared/socketdrv
+        ${CMAKE_SOURCE_DIR}/src/hvsc
+        ${CMAKE_SOURCE_DIR}/src/lib/linenoise-ng
+        ${CMAKE_SOURCE_DIR}/src/cart
+        ${CMAKE_SOURCE_DIR}/src/arch/shared/hotkeys
+        /usr/include/SDL2
+        /usr/include/libpng16
+        /usr/include/aarch64-linux-gnu
+        /usr/include/webp
+    )
+
+target_compile_options(
+    xpet
+    PRIVATE
+        $<$<COMPILE_LANGUAGE:C>:-Wno-deprecated-declarations -g -O3 -W -Wall -Wextra -Wformat -Wformat-signedness -Wformat-security -Wshadow -Wpointer-arith -Wmissing-prototypes -Wstrict-prototypes -Wuninitialized -Wmissing-field-initializers -Wunreachable-code -Werror=implicit-function-declaration -Wfatal-errors -Wdiscarded-qualifiers -Wno-unknown-pragmas -Wunused-but-set-variable -Wno-sign-compare -Wno-ignored-qualifiers -Wno-unused-parameter -fopenmp>
+        $<$<COMPILE_LANGUAGE:CXX>:-Wno-deprecated-declarations -g -O3 -Wall -Wformat -Wshadow -Wpointer-arith -Wuninitialized -Wunreachable-code -Wno-unused-parameter -Wfatal-errors -fopenmp -fno-exceptions>
+        $<$<COMPILE_LANGUAGE:OBJC>:-Wno-deprecated-declarations >
+    )
+
+target_link_options(
+    xpet
+    PRIVATE
+        -Wno-deprecated-declarations -fopenmp
+    )
+
+target_sources(
+    xpet
+    PRIVATE
+        alarm.c
+        attach.c
+        autostart.c
+        autostart-prg.c
+        cbmdos.c
+        cbmimage.c
+        charset.c
+        clipboard.c
+        cmdline.c
+        color.c
+        crc32.c
+        crt.c
+        debug.c
+        dma.c
+        event.c
+        findpath.c
+        fliplist.c
+        gcr.c
+        info.c
+        init.c
+        initcmdline.c
+        interrupt.c
+        kbdbuf.c
+        keyboard.c
+        keymap.c
+        lib.c
+        log.c
+        machine-bus.c
+        machine.c
+        main.c
+        mainlock.c
+        m3u.c
+        network.c
+        opencbmlib.c
+        palette.c
+        profiler.c
+        ram.c
+        rawfile.c
+        rawnet.c
+        resources.c
+        romset.c
+        screenshot.c
+        sha1.c
+        snapshot.c
+        socket.c
+        sound.c
+        sysfile.c
+        traps.c
+        util.c
+        vicefeatures.c
+        vsync.c
+        zfile.c
+        zipcode.c
+        infocontrib.h
+        6510core.h
+        acia.h
+        alarm.h
+        attach.h
+        autostart.h
+        autostart-prg.h
+        c128ui.h
+        c64ui.h
+        cartio.h
+        cartridge.h
+        catweaselmkiii.h
+        cbm2ui.h
+        cbmdos.h
+        cbmimage.h
+        charset.h
+        cia.h
+        clipboard.h
+        cmdline.h
+        crt.h
+        color.h
+        console.h
+        crc32.h
+        debug.h
+        diskconstants.h
+        diskimage.h
+        dma.h
+        dynlib.h
+        export.h
+        fileio.h
+        findpath.h
+        fixpoint.h
+        fsdevice.h
+        flash040.h
+        flash800.h
+        fliplist.h
+        fullscreen.h
+        gcr.h
+        gfxoutput.h
+        h6809regs.h
+        hardsid.h
+        iecbus.h
+        iecdrive.h
+        imagecontents.h
+        info.h
+        init.h
+        initcmdline.h
+        interrupt.h
+        kbdbuf.h
+        keyboard.h
+        keymap.h
+        lib.h
+        log.h
+        machine-bus.h
+        machine-drive.h
+        machine-printer.h
+        machine-video.h
+        machine.h
+        main.h
+        mainc64cpu.h
+        main65816cpu.h
+        maincpu.h
+        mainlock.h
+        mem.h
+        midi.h
+        mididrv.h
+        monitor.h
+        mos6510.h
+        mos6510dtv.h
+        m3u.h
+        network.h
+        opencbmlib.h
+        palette.h
+        parallel.h
+        parsid.h
+        petui.h
+        piacore.h
+        plus4ui.h
+        profiler.h
+        profiler_data.h
+        r65c02.h
+        ram.h
+        rawfile.h
+        rawnet.h
+        resources.h
+        riot.h
+        romset.h
+        scpu64ui.h
+        screenshot.h
+        sha1.h
+        snapshot.h
+        serial.h
+        sidcart.h
+        signals.h
+        snespad.h
+        sound.h
+        sysfile.h
+        tap.h
+        tape.h
+        tpi.h
+        traps.h
+        types.h
+        uiapi.h
+        uicmdline.h
+        uicolor.h
+        uimon.h
+        usbsid.h
+        util.h
+        version.h
+        via.h
+        vic20ui.h
+        vice.h
+        vicedate.h
+        vice-event.h
+        vicesocket.h
+        vicefeatures.h
+        vicii.h
+        vicii-colorram.h
+        video.h
+        viewport.h
+        vsidui.h
+        vsync.h
+        vsyncapi.h
+        wdc65816.h
+        z80regs.h
+        zfile.h
+        zipcode.h
+    )
+
+target_link_libraries(
+    xpet
+    PRIVATE
+    	libarchdep libtapeport libdatasette libpet libdiag libdriveiecieee libdriveieee libdrive libdriveiec libdrivetcbm libp64 libparallel libvdrive libmonitor libsid libjoyport libsamplerdrv libsounddrv libmididrv libsocketdrv libhwsiddrv libgfxoutputdrv libprinterdrv libdiskimage libfsdevice libtape libfileio libserial libcore librs232drvpet libcrtc libraster libvideo libarch libuserport libimagecontents libjoyport libresid librtc libhvsc libhotkeys libzmbv libpetstubs libarch libarchdep liblinenoiseng ${LIB_M} ${LIB_SDL2} ${LIB_SDL2_IMAGE} ${LIB_SDL2} ${LIB_CURL} ${LIB_PULSE_SIMPLE} ${LIB_PULSE} ${LIB_ASOUND} ${LIB_PNG} ${LIB_Z}
+    )
+
+if(FIRST_RUN)
+    set(CMAKE_XCODE_GENERATE_SCHEME ON)
+    add_executable(xplus4)
+    set(CMAKE_XCODE_GENERATE_SCHEME OFF)
+else()
+    add_executable(xplus4)
+endif()
+
+target_compile_definitions(
+    xplus4
+    PRIVATE
+        $<$<COMPILE_LANGUAGE:C>:HAVE_CONFIG_H NDEBUG _REENTRANT _REENTRANT >
+        $<$<COMPILE_LANGUAGE:CXX>:>
+        $<$<COMPILE_LANGUAGE:OBJC>:>
+    )
+
+target_include_directories(
+    xplus4
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}
+        ${CMAKE_CURRENT_SOURCE_DIR}/
+        ${CMAKE_SOURCE_DIR}/src/arch/systemheaderoverride
+        ${CMAKE_SOURCE_DIR}/src/arch/sdl
+        ${CMAKE_SOURCE_DIR}/src/arch/shared
+        ${CMAKE_SOURCE_DIR}/src
+        ${CMAKE_SOURCE_DIR}/src/c64
+        ${CMAKE_SOURCE_DIR}/src/datasette
+        ${CMAKE_SOURCE_DIR}/src/drive
+        ${CMAKE_SOURCE_DIR}/src/printerdrv
+        ${CMAKE_SOURCE_DIR}/src/fsdevice
+        ${CMAKE_SOURCE_DIR}/src/monitor
+        ${CMAKE_SOURCE_DIR}/src/plus4
+        ${CMAKE_SOURCE_DIR}/src/vic20
+        ${CMAKE_SOURCE_DIR}/src/vdrive
+        ${CMAKE_SOURCE_DIR}/src/diskimage
+        ${CMAKE_SOURCE_DIR}/src/imagecontents
+        ${CMAKE_SOURCE_DIR}/src/diag
+        ${CMAKE_SOURCE_DIR}/src/userport
+        ${CMAKE_SOURCE_DIR}/src/lib/
+        ${CMAKE_SOURCE_DIR}/src/lib/p64
+        ${CMAKE_SOURCE_DIR}/src/joyport
+        ${CMAKE_SOURCE_DIR}/src/core/rtc
+        ${CMAKE_SOURCE_DIR}/src/tapeport
+        ${CMAKE_SOURCE_DIR}/src/tape
+        ${CMAKE_SOURCE_DIR}/src/arch/shared/socketdrv
+        ${CMAKE_SOURCE_DIR}/src/hvsc
+        ${CMAKE_SOURCE_DIR}/src/lib/linenoise-ng
+        ${CMAKE_SOURCE_DIR}/src/cart
+        ${CMAKE_SOURCE_DIR}/src/arch/shared/hotkeys
+        /usr/include/SDL2
+        /usr/include/libpng16
+        /usr/include/aarch64-linux-gnu
+        /usr/include/webp
+    )
+
+target_compile_options(
+    xplus4
+    PRIVATE
+        $<$<COMPILE_LANGUAGE:C>:-Wno-deprecated-declarations -g -O3 -W -Wall -Wextra -Wformat -Wformat-signedness -Wformat-security -Wshadow -Wpointer-arith -Wmissing-prototypes -Wstrict-prototypes -Wuninitialized -Wmissing-field-initializers -Wunreachable-code -Werror=implicit-function-declaration -Wfatal-errors -Wdiscarded-qualifiers -Wno-unknown-pragmas -Wunused-but-set-variable -Wno-sign-compare -Wno-ignored-qualifiers -Wno-unused-parameter -fopenmp>
+        $<$<COMPILE_LANGUAGE:CXX>:-Wno-deprecated-declarations -g -O3 -Wall -Wformat -Wshadow -Wpointer-arith -Wuninitialized -Wunreachable-code -Wno-unused-parameter -Wfatal-errors -fopenmp -fno-exceptions>
+        $<$<COMPILE_LANGUAGE:OBJC>:-Wno-deprecated-declarations >
+    )
+
+target_link_options(
+    xplus4
+    PRIVATE
+        -Wno-deprecated-declarations -fopenmp
+    )
+
+target_sources(
+    xplus4
+    PRIVATE
+        alarm.c
+        attach.c
+        autostart.c
+        autostart-prg.c
+        cbmdos.c
+        cbmimage.c
+        charset.c
+        clipboard.c
+        cmdline.c
+        color.c
+        crc32.c
+        crt.c
+        debug.c
+        dma.c
+        event.c
+        findpath.c
+        fliplist.c
+        gcr.c
+        info.c
+        init.c
+        initcmdline.c
+        interrupt.c
+        kbdbuf.c
+        keyboard.c
+        keymap.c
+        lib.c
+        log.c
+        machine-bus.c
+        machine.c
+        main.c
+        mainlock.c
+        m3u.c
+        network.c
+        opencbmlib.c
+        palette.c
+        profiler.c
+        ram.c
+        rawfile.c
+        rawnet.c
+        resources.c
+        romset.c
+        screenshot.c
+        sha1.c
+        snapshot.c
+        socket.c
+        sound.c
+        sysfile.c
+        traps.c
+        util.c
+        vicefeatures.c
+        vsync.c
+        zfile.c
+        zipcode.c
+        infocontrib.h
+        6510core.h
+        acia.h
+        alarm.h
+        attach.h
+        autostart.h
+        autostart-prg.h
+        c128ui.h
+        c64ui.h
+        cartio.h
+        cartridge.h
+        catweaselmkiii.h
+        cbm2ui.h
+        cbmdos.h
+        cbmimage.h
+        charset.h
+        cia.h
+        clipboard.h
+        cmdline.h
+        crt.h
+        color.h
+        console.h
+        crc32.h
+        debug.h
+        diskconstants.h
+        diskimage.h
+        dma.h
+        dynlib.h
+        export.h
+        fileio.h
+        findpath.h
+        fixpoint.h
+        fsdevice.h
+        flash040.h
+        flash800.h
+        fliplist.h
+        fullscreen.h
+        gcr.h
+        gfxoutput.h
+        h6809regs.h
+        hardsid.h
+        iecbus.h
+        iecdrive.h
+        imagecontents.h
+        info.h
+        init.h
+        initcmdline.h
+        interrupt.h
+        kbdbuf.h
+        keyboard.h
+        keymap.h
+        lib.h
+        log.h
+        machine-bus.h
+        machine-drive.h
+        machine-printer.h
+        machine-video.h
+        machine.h
+        main.h
+        mainc64cpu.h
+        main65816cpu.h
+        maincpu.h
+        mainlock.h
+        mem.h
+        midi.h
+        mididrv.h
+        monitor.h
+        mos6510.h
+        mos6510dtv.h
+        m3u.h
+        network.h
+        opencbmlib.h
+        palette.h
+        parallel.h
+        parsid.h
+        petui.h
+        piacore.h
+        plus4ui.h
+        profiler.h
+        profiler_data.h
+        r65c02.h
+        ram.h
+        rawfile.h
+        rawnet.h
+        resources.h
+        riot.h
+        romset.h
+        scpu64ui.h
+        screenshot.h
+        sha1.h
+        snapshot.h
+        serial.h
+        sidcart.h
+        signals.h
+        snespad.h
+        sound.h
+        sysfile.h
+        tap.h
+        tape.h
+        tpi.h
+        traps.h
+        types.h
+        uiapi.h
+        uicmdline.h
+        uicolor.h
+        uimon.h
+        usbsid.h
+        util.h
+        version.h
+        via.h
+        vic20ui.h
+        vice.h
+        vicedate.h
+        vice-event.h
+        vicesocket.h
+        vicefeatures.h
+        vicii.h
+        vicii-colorram.h
+        video.h
+        viewport.h
+        vsidui.h
+        vsync.h
+        vsyncapi.h
+        wdc65816.h
+        z80regs.h
+        zfile.h
+        zipcode.h
+    )
+
+target_link_libraries(
+    xplus4
+    PRIVATE
+    	libarchdep libtapeport libdatasette libplus4 libplus4cart libdiag libuserport libdriveiec libdriveiecieee libdriveiecplus4exp libdrivetcbm libdrive libdriveieee libparallel libdriveieee libp64 libiecbus libvdrive libmonitor libsid libjoyport libsamplerdrv libsounddrv libmididrv libsocketdrv libhwsiddrv libgfxoutputdrv libprinterdrv libdiskimage libfsdevice libtape libfileio libserial libcore librs232drv libraster librtc libvideo libarch libimagecontents libjoyport libresid libhvsc libhotkeys libzmbv libplus4stubs libplus4 libarch libarchdep liblinenoiseng ${LIB_M} ${LIB_SDL2} ${LIB_SDL2_IMAGE} ${LIB_SDL2} ${LIB_CURL} ${LIB_PULSE_SIMPLE} ${LIB_PULSE} ${LIB_ASOUND} ${LIB_PNG} ${LIB_Z}
+    )
+
+if(FIRST_RUN)
+    set(CMAKE_XCODE_GENERATE_SCHEME ON)
+    add_executable(xcbm2)
+    set(CMAKE_XCODE_GENERATE_SCHEME OFF)
+else()
+    add_executable(xcbm2)
+endif()
+
+target_compile_definitions(
+    xcbm2
+    PRIVATE
+        $<$<COMPILE_LANGUAGE:C>:HAVE_CONFIG_H NDEBUG _REENTRANT _REENTRANT >
+        $<$<COMPILE_LANGUAGE:CXX>:>
+        $<$<COMPILE_LANGUAGE:OBJC>:>
+    )
+
+target_include_directories(
+    xcbm2
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}
+        ${CMAKE_CURRENT_SOURCE_DIR}/
+        ${CMAKE_SOURCE_DIR}/src/arch/systemheaderoverride
+        ${CMAKE_SOURCE_DIR}/src/arch/sdl
+        ${CMAKE_SOURCE_DIR}/src/arch/shared
+        ${CMAKE_SOURCE_DIR}/src
+        ${CMAKE_SOURCE_DIR}/src/c64
+        ${CMAKE_SOURCE_DIR}/src/datasette
+        ${CMAKE_SOURCE_DIR}/src/drive
+        ${CMAKE_SOURCE_DIR}/src/printerdrv
+        ${CMAKE_SOURCE_DIR}/src/fsdevice
+        ${CMAKE_SOURCE_DIR}/src/monitor
+        ${CMAKE_SOURCE_DIR}/src/plus4
+        ${CMAKE_SOURCE_DIR}/src/vic20
+        ${CMAKE_SOURCE_DIR}/src/vdrive
+        ${CMAKE_SOURCE_DIR}/src/diskimage
+        ${CMAKE_SOURCE_DIR}/src/imagecontents
+        ${CMAKE_SOURCE_DIR}/src/diag
+        ${CMAKE_SOURCE_DIR}/src/userport
+        ${CMAKE_SOURCE_DIR}/src/lib/
+        ${CMAKE_SOURCE_DIR}/src/lib/p64
+        ${CMAKE_SOURCE_DIR}/src/joyport
+        ${CMAKE_SOURCE_DIR}/src/core/rtc
+        ${CMAKE_SOURCE_DIR}/src/tapeport
+        ${CMAKE_SOURCE_DIR}/src/tape
+        ${CMAKE_SOURCE_DIR}/src/arch/shared/socketdrv
+        ${CMAKE_SOURCE_DIR}/src/hvsc
+        ${CMAKE_SOURCE_DIR}/src/lib/linenoise-ng
+        ${CMAKE_SOURCE_DIR}/src/cart
+        ${CMAKE_SOURCE_DIR}/src/arch/shared/hotkeys
+        /usr/include/SDL2
+        /usr/include/libpng16
+        /usr/include/aarch64-linux-gnu
+        /usr/include/webp
+    )
+
+target_compile_options(
+    xcbm2
+    PRIVATE
+        $<$<COMPILE_LANGUAGE:C>:-Wno-deprecated-declarations -g -O3 -W -Wall -Wextra -Wformat -Wformat-signedness -Wformat-security -Wshadow -Wpointer-arith -Wmissing-prototypes -Wstrict-prototypes -Wuninitialized -Wmissing-field-initializers -Wunreachable-code -Werror=implicit-function-declaration -Wfatal-errors -Wdiscarded-qualifiers -Wno-unknown-pragmas -Wunused-but-set-variable -Wno-sign-compare -Wno-ignored-qualifiers -Wno-unused-parameter -fopenmp>
+        $<$<COMPILE_LANGUAGE:CXX>:-Wno-deprecated-declarations -g -O3 -Wall -Wformat -Wshadow -Wpointer-arith -Wuninitialized -Wunreachable-code -Wno-unused-parameter -Wfatal-errors -fopenmp -fno-exceptions>
+        $<$<COMPILE_LANGUAGE:OBJC>:-Wno-deprecated-declarations >
+    )
+
+target_link_options(
+    xcbm2
+    PRIVATE
+        -Wno-deprecated-declarations -fopenmp
+    )
+
+target_sources(
+    xcbm2
+    PRIVATE
+        alarm.c
+        attach.c
+        autostart.c
+        autostart-prg.c
+        cbmdos.c
+        cbmimage.c
+        charset.c
+        clipboard.c
+        cmdline.c
+        color.c
+        crc32.c
+        crt.c
+        debug.c
+        dma.c
+        event.c
+        findpath.c
+        fliplist.c
+        gcr.c
+        info.c
+        init.c
+        initcmdline.c
+        interrupt.c
+        kbdbuf.c
+        keyboard.c
+        keymap.c
+        lib.c
+        log.c
+        machine-bus.c
+        machine.c
+        main.c
+        mainlock.c
+        m3u.c
+        network.c
+        opencbmlib.c
+        palette.c
+        profiler.c
+        ram.c
+        rawfile.c
+        rawnet.c
+        resources.c
+        romset.c
+        screenshot.c
+        sha1.c
+        snapshot.c
+        socket.c
+        sound.c
+        sysfile.c
+        traps.c
+        util.c
+        vicefeatures.c
+        vsync.c
+        zfile.c
+        zipcode.c
+        infocontrib.h
+        6510core.h
+        acia.h
+        alarm.h
+        attach.h
+        autostart.h
+        autostart-prg.h
+        c128ui.h
+        c64ui.h
+        cartio.h
+        cartridge.h
+        catweaselmkiii.h
+        cbm2ui.h
+        cbmdos.h
+        cbmimage.h
+        charset.h
+        cia.h
+        clipboard.h
+        cmdline.h
+        crt.h
+        color.h
+        console.h
+        crc32.h
+        debug.h
+        diskconstants.h
+        diskimage.h
+        dma.h
+        dynlib.h
+        export.h
+        fileio.h
+        findpath.h
+        fixpoint.h
+        fsdevice.h
+        flash040.h
+        flash800.h
+        fliplist.h
+        fullscreen.h
+        gcr.h
+        gfxoutput.h
+        h6809regs.h
+        hardsid.h
+        iecbus.h
+        iecdrive.h
+        imagecontents.h
+        info.h
+        init.h
+        initcmdline.h
+        interrupt.h
+        kbdbuf.h
+        keyboard.h
+        keymap.h
+        lib.h
+        log.h
+        machine-bus.h
+        machine-drive.h
+        machine-printer.h
+        machine-video.h
+        machine.h
+        main.h
+        mainc64cpu.h
+        main65816cpu.h
+        maincpu.h
+        mainlock.h
+        mem.h
+        midi.h
+        mididrv.h
+        monitor.h
+        mos6510.h
+        mos6510dtv.h
+        m3u.h
+        network.h
+        opencbmlib.h
+        palette.h
+        parallel.h
+        parsid.h
+        petui.h
+        piacore.h
+        plus4ui.h
+        profiler.h
+        profiler_data.h
+        r65c02.h
+        ram.h
+        rawfile.h
+        rawnet.h
+        resources.h
+        riot.h
+        romset.h
+        scpu64ui.h
+        screenshot.h
+        sha1.h
+        snapshot.h
+        serial.h
+        sidcart.h
+        signals.h
+        snespad.h
+        sound.h
+        sysfile.h
+        tap.h
+        tape.h
+        tpi.h
+        traps.h
+        types.h
+        uiapi.h
+        uicmdline.h
+        uicolor.h
+        uimon.h
+        usbsid.h
+        util.h
+        version.h
+        via.h
+        vic20ui.h
+        vice.h
+        vicedate.h
+        vice-event.h
+        vicesocket.h
+        vicefeatures.h
+        vicii.h
+        vicii-colorram.h
+        video.h
+        viewport.h
+        vsidui.h
+        vsync.h
+        vsyncapi.h
+        wdc65816.h
+        z80regs.h
+        zfile.h
+        zipcode.h
+    )
+
+target_link_libraries(
+    xcbm2
+    PRIVATE
+    	libarchdep libtapeport libdatasette libcbm2 libcbm2cart libdiag libdriveiecieee libdriveieee libdrive libdriveiec libdrivetcbm libp64 libparallel libvdrive libmonitor libsid libjoyport libsamplerdrv libsounddrv libmididrv libsocketdrv libhwsiddrv libgfxoutputdrv libprinterdrv libdiskimage libfsdevice libtape libfileio libserial libcore librs232drvpet libcrtc libraster libvideo libarch libuserport libimagecontents libjoyport libcbm2stubs libresid librtc libhvsc libhotkeys libzmbv libarch libarchdep liblinenoiseng ${LIB_M} ${LIB_SDL2} ${LIB_SDL2_IMAGE} ${LIB_SDL2} ${LIB_CURL} ${LIB_PULSE_SIMPLE} ${LIB_PULSE} ${LIB_ASOUND} ${LIB_PNG} ${LIB_Z}
+    )
+
+if(FIRST_RUN)
+    set(CMAKE_XCODE_GENERATE_SCHEME ON)
+    add_executable(xcbm5x0)
+    set(CMAKE_XCODE_GENERATE_SCHEME OFF)
+else()
+    add_executable(xcbm5x0)
+endif()
+
+target_compile_definitions(
+    xcbm5x0
+    PRIVATE
+        $<$<COMPILE_LANGUAGE:C>:HAVE_CONFIG_H NDEBUG _REENTRANT _REENTRANT >
+        $<$<COMPILE_LANGUAGE:CXX>:>
+        $<$<COMPILE_LANGUAGE:OBJC>:>
+    )
+
+target_include_directories(
+    xcbm5x0
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}
+        ${CMAKE_CURRENT_SOURCE_DIR}/
+        ${CMAKE_SOURCE_DIR}/src/arch/systemheaderoverride
+        ${CMAKE_SOURCE_DIR}/src/arch/sdl
+        ${CMAKE_SOURCE_DIR}/src/arch/shared
+        ${CMAKE_SOURCE_DIR}/src
+        ${CMAKE_SOURCE_DIR}/src/c64
+        ${CMAKE_SOURCE_DIR}/src/datasette
+        ${CMAKE_SOURCE_DIR}/src/drive
+        ${CMAKE_SOURCE_DIR}/src/printerdrv
+        ${CMAKE_SOURCE_DIR}/src/fsdevice
+        ${CMAKE_SOURCE_DIR}/src/monitor
+        ${CMAKE_SOURCE_DIR}/src/plus4
+        ${CMAKE_SOURCE_DIR}/src/vic20
+        ${CMAKE_SOURCE_DIR}/src/vdrive
+        ${CMAKE_SOURCE_DIR}/src/diskimage
+        ${CMAKE_SOURCE_DIR}/src/imagecontents
+        ${CMAKE_SOURCE_DIR}/src/diag
+        ${CMAKE_SOURCE_DIR}/src/userport
+        ${CMAKE_SOURCE_DIR}/src/lib/
+        ${CMAKE_SOURCE_DIR}/src/lib/p64
+        ${CMAKE_SOURCE_DIR}/src/joyport
+        ${CMAKE_SOURCE_DIR}/src/core/rtc
+        ${CMAKE_SOURCE_DIR}/src/tapeport
+        ${CMAKE_SOURCE_DIR}/src/tape
+        ${CMAKE_SOURCE_DIR}/src/arch/shared/socketdrv
+        ${CMAKE_SOURCE_DIR}/src/hvsc
+        ${CMAKE_SOURCE_DIR}/src/lib/linenoise-ng
+        ${CMAKE_SOURCE_DIR}/src/cart
+        ${CMAKE_SOURCE_DIR}/src/arch/shared/hotkeys
+        /usr/include/SDL2
+        /usr/include/libpng16
+        /usr/include/aarch64-linux-gnu
+        /usr/include/webp
+    )
+
+target_compile_options(
+    xcbm5x0
+    PRIVATE
+        $<$<COMPILE_LANGUAGE:C>:-Wno-deprecated-declarations -g -O3 -W -Wall -Wextra -Wformat -Wformat-signedness -Wformat-security -Wshadow -Wpointer-arith -Wmissing-prototypes -Wstrict-prototypes -Wuninitialized -Wmissing-field-initializers -Wunreachable-code -Werror=implicit-function-declaration -Wfatal-errors -Wdiscarded-qualifiers -Wno-unknown-pragmas -Wunused-but-set-variable -Wno-sign-compare -Wno-ignored-qualifiers -Wno-unused-parameter -fopenmp>
+        $<$<COMPILE_LANGUAGE:CXX>:-Wno-deprecated-declarations -g -O3 -Wall -Wformat -Wshadow -Wpointer-arith -Wuninitialized -Wunreachable-code -Wno-unused-parameter -Wfatal-errors -fopenmp -fno-exceptions>
+        $<$<COMPILE_LANGUAGE:OBJC>:-Wno-deprecated-declarations >
+    )
+
+target_link_options(
+    xcbm5x0
+    PRIVATE
+        -Wno-deprecated-declarations -fopenmp
+    )
+
+target_sources(
+    xcbm5x0
+    PRIVATE
+        alarm.c
+        attach.c
+        autostart.c
+        autostart-prg.c
+        cbmdos.c
+        cbmimage.c
+        charset.c
+        clipboard.c
+        cmdline.c
+        color.c
+        crc32.c
+        crt.c
+        debug.c
+        dma.c
+        event.c
+        findpath.c
+        fliplist.c
+        gcr.c
+        info.c
+        init.c
+        initcmdline.c
+        interrupt.c
+        kbdbuf.c
+        keyboard.c
+        keymap.c
+        lib.c
+        log.c
+        machine-bus.c
+        machine.c
+        main.c
+        mainlock.c
+        m3u.c
+        network.c
+        opencbmlib.c
+        palette.c
+        profiler.c
+        ram.c
+        rawfile.c
+        rawnet.c
+        resources.c
+        romset.c
+        screenshot.c
+        sha1.c
+        snapshot.c
+        socket.c
+        sound.c
+        sysfile.c
+        traps.c
+        util.c
+        vicefeatures.c
+        vsync.c
+        zfile.c
+        zipcode.c
+        infocontrib.h
+        6510core.h
+        acia.h
+        alarm.h
+        attach.h
+        autostart.h
+        autostart-prg.h
+        c128ui.h
+        c64ui.h
+        cartio.h
+        cartridge.h
+        catweaselmkiii.h
+        cbm2ui.h
+        cbmdos.h
+        cbmimage.h
+        charset.h
+        cia.h
+        clipboard.h
+        cmdline.h
+        crt.h
+        color.h
+        console.h
+        crc32.h
+        debug.h
+        diskconstants.h
+        diskimage.h
+        dma.h
+        dynlib.h
+        export.h
+        fileio.h
+        findpath.h
+        fixpoint.h
+        fsdevice.h
+        flash040.h
+        flash800.h
+        fliplist.h
+        fullscreen.h
+        gcr.h
+        gfxoutput.h
+        h6809regs.h
+        hardsid.h
+        iecbus.h
+        iecdrive.h
+        imagecontents.h
+        info.h
+        init.h
+        initcmdline.h
+        interrupt.h
+        kbdbuf.h
+        keyboard.h
+        keymap.h
+        lib.h
+        log.h
+        machine-bus.h
+        machine-drive.h
+        machine-printer.h
+        machine-video.h
+        machine.h
+        main.h
+        mainc64cpu.h
+        main65816cpu.h
+        maincpu.h
+        mainlock.h
+        mem.h
+        midi.h
+        mididrv.h
+        monitor.h
+        mos6510.h
+        mos6510dtv.h
+        m3u.h
+        network.h
+        opencbmlib.h
+        palette.h
+        parallel.h
+        parsid.h
+        petui.h
+        piacore.h
+        plus4ui.h
+        profiler.h
+        profiler_data.h
+        r65c02.h
+        ram.h
+        rawfile.h
+        rawnet.h
+        resources.h
+        riot.h
+        romset.h
+        scpu64ui.h
+        screenshot.h
+        sha1.h
+        snapshot.h
+        serial.h
+        sidcart.h
+        signals.h
+        snespad.h
+        sound.h
+        sysfile.h
+        tap.h
+        tape.h
+        tpi.h
+        traps.h
+        types.h
+        uiapi.h
+        uicmdline.h
+        uicolor.h
+        uimon.h
+        usbsid.h
+        util.h
+        version.h
+        via.h
+        vic20ui.h
+        vice.h
+        vicedate.h
+        vice-event.h
+        vicesocket.h
+        vicefeatures.h
+        vicii.h
+        vicii-colorram.h
+        video.h
+        viewport.h
+        vsidui.h
+        vsync.h
+        vsyncapi.h
+        wdc65816.h
+        z80regs.h
+        zfile.h
+        zipcode.h
+    )
+
+target_link_libraries(
+    xcbm5x0
+    PRIVATE
+    	libarchdep libtapeport libcbm5x0 libcbm2cart libdatasette libdiag libdriveiecieee libdriveieee libdrive libdrivetcbm libdriveiec libp64 libparallel libvdrive libmonitor libcbm5x0 libsid libjoyport libsamplerdrv libsounddrv libmididrv libsocketdrv libhwsiddrv libgfxoutputdrv libprinterdrv libdiskimage libfsdevice libtape libfileio libserial libcore librs232drv libvicii libraster librtc libvideo libarch libcbm5x0stubs libimagecontents libjoyport libresid libhvsc libhotkeys libzmbv libarch libarchdep liblinenoiseng ${LIB_M} ${LIB_SDL2} ${LIB_SDL2_IMAGE} ${LIB_SDL2} ${LIB_CURL} ${LIB_PULSE_SIMPLE} ${LIB_PULSE} ${LIB_ASOUND} ${LIB_PNG} ${LIB_Z}
+    )
+
+if(FIRST_RUN)
+    set(CMAKE_XCODE_GENERATE_SCHEME ON)
+    add_executable(c1541)
+    set(CMAKE_XCODE_GENERATE_SCHEME OFF)
+else()
+    add_executable(c1541)
+endif()
+
+target_compile_definitions(
+    c1541
+    PRIVATE
+        $<$<COMPILE_LANGUAGE:C>:HAVE_CONFIG_H NDEBUG _REENTRANT _REENTRANT >
+        $<$<COMPILE_LANGUAGE:CXX>:>
+        $<$<COMPILE_LANGUAGE:OBJC>:>
+    )
+
+target_include_directories(
+    c1541
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}
+        ${CMAKE_CURRENT_SOURCE_DIR}/
+        ${CMAKE_SOURCE_DIR}/src/arch/systemheaderoverride
+        ${CMAKE_SOURCE_DIR}/src/arch/sdl
+        ${CMAKE_SOURCE_DIR}/src/arch/shared
+        ${CMAKE_SOURCE_DIR}/src
+        ${CMAKE_SOURCE_DIR}/src/c64
+        ${CMAKE_SOURCE_DIR}/src/datasette
+        ${CMAKE_SOURCE_DIR}/src/drive
+        ${CMAKE_SOURCE_DIR}/src/printerdrv
+        ${CMAKE_SOURCE_DIR}/src/fsdevice
+        ${CMAKE_SOURCE_DIR}/src/monitor
+        ${CMAKE_SOURCE_DIR}/src/plus4
+        ${CMAKE_SOURCE_DIR}/src/vic20
+        ${CMAKE_SOURCE_DIR}/src/vdrive
+        ${CMAKE_SOURCE_DIR}/src/diskimage
+        ${CMAKE_SOURCE_DIR}/src/imagecontents
+        ${CMAKE_SOURCE_DIR}/src/diag
+        ${CMAKE_SOURCE_DIR}/src/userport
+        ${CMAKE_SOURCE_DIR}/src/lib/
+        ${CMAKE_SOURCE_DIR}/src/lib/p64
+        ${CMAKE_SOURCE_DIR}/src/joyport
+        ${CMAKE_SOURCE_DIR}/src/core/rtc
+        ${CMAKE_SOURCE_DIR}/src/tapeport
+        ${CMAKE_SOURCE_DIR}/src/tape
+        ${CMAKE_SOURCE_DIR}/src/arch/shared/socketdrv
+        ${CMAKE_SOURCE_DIR}/src/hvsc
+        ${CMAKE_SOURCE_DIR}/src/lib/linenoise-ng
+        ${CMAKE_SOURCE_DIR}/src/cart
+        ${CMAKE_SOURCE_DIR}/src/arch/shared/hotkeys
+        /usr/include/SDL2
+        /usr/include/libpng16
+        /usr/include/aarch64-linux-gnu
+        /usr/include/webp
+    )
+
+target_compile_options(
+    c1541
+    PRIVATE
+        $<$<COMPILE_LANGUAGE:C>:-Wno-deprecated-declarations -g -O3 -W -Wall -Wextra -Wformat -Wformat-signedness -Wformat-security -Wshadow -Wpointer-arith -Wmissing-prototypes -Wstrict-prototypes -Wuninitialized -Wmissing-field-initializers -Wunreachable-code -Werror=implicit-function-declaration -Wfatal-errors -Wdiscarded-qualifiers -Wno-unknown-pragmas -Wunused-but-set-variable -Wno-sign-compare -Wno-ignored-qualifiers -Wno-unused-parameter -fopenmp>
+        $<$<COMPILE_LANGUAGE:CXX>:-Wno-deprecated-declarations -g -O3 -Wall -Wformat -Wshadow -Wpointer-arith -Wuninitialized -Wunreachable-code -Wno-unused-parameter -Wfatal-errors -fopenmp -fno-exceptions>
+        $<$<COMPILE_LANGUAGE:OBJC>:-Wno-deprecated-declarations >
+    )
+
+target_link_options(
+    c1541
+    PRIVATE
+        -Wno-deprecated-declarations -fopenmp
+    )
+
+target_sources(
+    c1541
+    PRIVATE
+        c1541.c
+        c1541-stubs.c
+        cbmdos.c
+        charset.c
+        findpath.c
+        gcr.c
+        cbmimage.c
+        info.c
+        lib.c
+        log.c
+        opencbmlib.c
+        rawfile.c
+        resources.c
+        util.c
+        zfile.c
+        zipcode.c
+        infocontrib.h
+        6510core.h
+        acia.h
+        alarm.h
+        attach.h
+        autostart.h
+        autostart-prg.h
+        c128ui.h
+        c64ui.h
+        cartio.h
+        cartridge.h
+        catweaselmkiii.h
+        cbm2ui.h
+        cbmdos.h
+        cbmimage.h
+        charset.h
+        cia.h
+        clipboard.h
+        cmdline.h
+        crt.h
+        color.h
+        console.h
+        crc32.h
+        debug.h
+        diskconstants.h
+        diskimage.h
+        dma.h
+        dynlib.h
+        export.h
+        fileio.h
+        findpath.h
+        fixpoint.h
+        fsdevice.h
+        flash040.h
+        flash800.h
+        fliplist.h
+        fullscreen.h
+        gcr.h
+        gfxoutput.h
+        h6809regs.h
+        hardsid.h
+        iecbus.h
+        iecdrive.h
+        imagecontents.h
+        info.h
+        init.h
+        initcmdline.h
+        interrupt.h
+        kbdbuf.h
+        keyboard.h
+        keymap.h
+        lib.h
+        log.h
+        machine-bus.h
+        machine-drive.h
+        machine-printer.h
+        machine-video.h
+        machine.h
+        main.h
+        mainc64cpu.h
+        main65816cpu.h
+        maincpu.h
+        mainlock.h
+        mem.h
+        midi.h
+        mididrv.h
+        monitor.h
+        mos6510.h
+        mos6510dtv.h
+        m3u.h
+        network.h
+        opencbmlib.h
+        palette.h
+        parallel.h
+        parsid.h
+        petui.h
+        piacore.h
+        plus4ui.h
+        profiler.h
+        profiler_data.h
+        r65c02.h
+        ram.h
+        rawfile.h
+        rawnet.h
+        resources.h
+        riot.h
+        romset.h
+        scpu64ui.h
+        screenshot.h
+        sha1.h
+        snapshot.h
+        serial.h
+        sidcart.h
+        signals.h
+        snespad.h
+        sound.h
+        sysfile.h
+        tap.h
+        tape.h
+        tpi.h
+        traps.h
+        types.h
+        uiapi.h
+        uicmdline.h
+        uicolor.h
+        uimon.h
+        usbsid.h
+        util.h
+        version.h
+        via.h
+        vic20ui.h
+        vice.h
+        vicedate.h
+        vice-event.h
+        vicesocket.h
+        vicefeatures.h
+        vicii.h
+        vicii-colorram.h
+        video.h
+        viewport.h
+        vsidui.h
+        vsync.h
+        vsyncapi.h
+        wdc65816.h
+        z80regs.h
+        zfile.h
+        zipcode.h
+    )
+
+target_link_libraries(
+    c1541
+    PRIVATE
+    	libtoolarch libp64 libvdrive libimagecontents libfileio libdiskimage libtape libserial libsocketdrv liblinenoiseng libarchdep ${LIB_M} ${LIB_SDL2} ${LIB_SDL2_IMAGE} ${LIB_SDL2} ${LIB_CURL} ${LIB_Z}
+    )
+
+if(FIRST_RUN)
+    set(CMAKE_XCODE_GENERATE_SCHEME ON)
+    add_executable(vsid)
+    set(CMAKE_XCODE_GENERATE_SCHEME OFF)
+else()
+    add_executable(vsid)
+endif()
+
+target_compile_definitions(
+    vsid
+    PRIVATE
+        $<$<COMPILE_LANGUAGE:C>:HAVE_CONFIG_H NDEBUG _REENTRANT _REENTRANT >
+        $<$<COMPILE_LANGUAGE:CXX>:>
+        $<$<COMPILE_LANGUAGE:OBJC>:>
+    )
+
+target_include_directories(
+    vsid
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}
+        ${CMAKE_CURRENT_SOURCE_DIR}/
+        ${CMAKE_SOURCE_DIR}/src/arch/systemheaderoverride
+        ${CMAKE_SOURCE_DIR}/src/arch/sdl
+        ${CMAKE_SOURCE_DIR}/src/arch/shared
+        ${CMAKE_SOURCE_DIR}/src
+        ${CMAKE_SOURCE_DIR}/src/c64
+        ${CMAKE_SOURCE_DIR}/src/datasette
+        ${CMAKE_SOURCE_DIR}/src/drive
+        ${CMAKE_SOURCE_DIR}/src/printerdrv
+        ${CMAKE_SOURCE_DIR}/src/fsdevice
+        ${CMAKE_SOURCE_DIR}/src/monitor
+        ${CMAKE_SOURCE_DIR}/src/plus4
+        ${CMAKE_SOURCE_DIR}/src/vic20
+        ${CMAKE_SOURCE_DIR}/src/vdrive
+        ${CMAKE_SOURCE_DIR}/src/diskimage
+        ${CMAKE_SOURCE_DIR}/src/imagecontents
+        ${CMAKE_SOURCE_DIR}/src/diag
+        ${CMAKE_SOURCE_DIR}/src/userport
+        ${CMAKE_SOURCE_DIR}/src/lib/
+        ${CMAKE_SOURCE_DIR}/src/lib/p64
+        ${CMAKE_SOURCE_DIR}/src/joyport
+        ${CMAKE_SOURCE_DIR}/src/core/rtc
+        ${CMAKE_SOURCE_DIR}/src/tapeport
+        ${CMAKE_SOURCE_DIR}/src/tape
+        ${CMAKE_SOURCE_DIR}/src/arch/shared/socketdrv
+        ${CMAKE_SOURCE_DIR}/src/hvsc
+        ${CMAKE_SOURCE_DIR}/src/lib/linenoise-ng
+        ${CMAKE_SOURCE_DIR}/src/cart
+        ${CMAKE_SOURCE_DIR}/src/arch/shared/hotkeys
+        /usr/include/SDL2
+        /usr/include/libpng16
+        /usr/include/aarch64-linux-gnu
+        /usr/include/webp
+    )
+
+target_compile_options(
+    vsid
+    PRIVATE
+        $<$<COMPILE_LANGUAGE:C>:-Wno-deprecated-declarations -g -O3 -W -Wall -Wextra -Wformat -Wformat-signedness -Wformat-security -Wshadow -Wpointer-arith -Wmissing-prototypes -Wstrict-prototypes -Wuninitialized -Wmissing-field-initializers -Wunreachable-code -Werror=implicit-function-declaration -Wfatal-errors -Wdiscarded-qualifiers -Wno-unknown-pragmas -Wunused-but-set-variable -Wno-sign-compare -Wno-ignored-qualifiers -Wno-unused-parameter -fopenmp>
+        $<$<COMPILE_LANGUAGE:CXX>:-Wno-deprecated-declarations -g -O3 -Wall -Wformat -Wshadow -Wpointer-arith -Wuninitialized -Wunreachable-code -Wno-unused-parameter -Wfatal-errors -fopenmp -fno-exceptions>
+        $<$<COMPILE_LANGUAGE:OBJC>:-Wno-deprecated-declarations >
+    )
+
+target_link_options(
+    vsid
+    PRIVATE
+        -Wno-deprecated-declarations -fopenmp
+    )
+
+target_sources(
+    vsid
+    PRIVATE
+        alarm.c
+        attach.c
+        autostart.c
+        autostart-prg.c
+        cbmdos.c
+        cbmimage.c
+        charset.c
+        clipboard.c
+        cmdline.c
+        color.c
+        crc32.c
+        crt.c
+        debug.c
+        dma.c
+        event.c
+        findpath.c
+        fliplist.c
+        gcr.c
+        info.c
+        init.c
+        initcmdline.c
+        interrupt.c
+        kbdbuf.c
+        keyboard.c
+        keymap.c
+        lib.c
+        log.c
+        machine-bus.c
+        machine.c
+        main.c
+        mainlock.c
+        m3u.c
+        network.c
+        opencbmlib.c
+        palette.c
+        profiler.c
+        ram.c
+        rawfile.c
+        rawnet.c
+        resources.c
+        romset.c
+        screenshot.c
+        sha1.c
+        snapshot.c
+        socket.c
+        sound.c
+        sysfile.c
+        traps.c
+        util.c
+        vicefeatures.c
+        vsync.c
+        zfile.c
+        zipcode.c
+        midi.c
+        infocontrib.h
+        6510core.h
+        acia.h
+        alarm.h
+        attach.h
+        autostart.h
+        autostart-prg.h
+        c128ui.h
+        c64ui.h
+        cartio.h
+        cartridge.h
+        catweaselmkiii.h
+        cbm2ui.h
+        cbmdos.h
+        cbmimage.h
+        charset.h
+        cia.h
+        clipboard.h
+        cmdline.h
+        crt.h
+        color.h
+        console.h
+        crc32.h
+        debug.h
+        diskconstants.h
+        diskimage.h
+        dma.h
+        dynlib.h
+        export.h
+        fileio.h
+        findpath.h
+        fixpoint.h
+        fsdevice.h
+        flash040.h
+        flash800.h
+        fliplist.h
+        fullscreen.h
+        gcr.h
+        gfxoutput.h
+        h6809regs.h
+        hardsid.h
+        iecbus.h
+        iecdrive.h
+        imagecontents.h
+        info.h
+        init.h
+        initcmdline.h
+        interrupt.h
+        kbdbuf.h
+        keyboard.h
+        keymap.h
+        lib.h
+        log.h
+        machine-bus.h
+        machine-drive.h
+        machine-printer.h
+        machine-video.h
+        machine.h
+        main.h
+        mainc64cpu.h
+        main65816cpu.h
+        maincpu.h
+        mainlock.h
+        mem.h
+        midi.h
+        mididrv.h
+        monitor.h
+        mos6510.h
+        mos6510dtv.h
+        m3u.h
+        network.h
+        opencbmlib.h
+        palette.h
+        parallel.h
+        parsid.h
+        petui.h
+        piacore.h
+        plus4ui.h
+        profiler.h
+        profiler_data.h
+        r65c02.h
+        ram.h
+        rawfile.h
+        rawnet.h
+        resources.h
+        riot.h
+        romset.h
+        scpu64ui.h
+        screenshot.h
+        sha1.h
+        snapshot.h
+        serial.h
+        sidcart.h
+        signals.h
+        snespad.h
+        sound.h
+        sysfile.h
+        tap.h
+        tape.h
+        tpi.h
+        traps.h
+        types.h
+        uiapi.h
+        uicmdline.h
+        uicolor.h
+        uimon.h
+        usbsid.h
+        util.h
+        version.h
+        via.h
+        vic20ui.h
+        vice.h
+        vicedate.h
+        vice-event.h
+        vicesocket.h
+        vicefeatures.h
+        vicii.h
+        vicii-colorram.h
+        video.h
+        viewport.h
+        vsidui.h
+        vsync.h
+        vsyncapi.h
+        wdc65816.h
+        z80regs.h
+        zfile.h
+        zipcode.h
+    )
+
+target_link_libraries(
+    vsid
+    PRIVATE
+    	libarchdep libvsid libsid libmonitor libsounddrv libmididrv libsocketdrv libhwsiddrv libserial libcore libvicii libraster libvideo libarch libresid libjoyport libhvsc libdatasette libhotkeys libvsidstubs libmd5 libarch libarchdep liblinenoiseng ${LIB_M} ${LIB_SDL2} ${LIB_SDL2_IMAGE} ${LIB_SDL2} ${LIB_CURL} ${LIB_PULSE_SIMPLE} ${LIB_PULSE} ${LIB_ASOUND} ${LIB_PNG} ${LIB_Z}
+    )
