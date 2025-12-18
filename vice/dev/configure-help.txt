@@ -1,0 +1,195 @@
+`configure' configures vice 3.9 to adapt to many kinds of systems.
+
+Usage: ./configure [OPTION]... [VAR=VALUE]...
+
+To assign environment variables (e.g., CC, CFLAGS...), specify them as
+VAR=VALUE.  See below for descriptions of some of the useful variables.
+
+Defaults for the options are specified in brackets.
+
+Configuration:
+  -h, --help              display this help and exit
+      --help=short        display options specific to this package
+      --help=recursive    display the short help of all the included packages
+  -V, --version           display version information and exit
+  -q, --quiet, --silent   do not print `checking ...' messages
+      --cache-file=FILE   cache test results in FILE [disabled]
+  -C, --config-cache      alias for `--cache-file=config.cache'
+  -n, --no-create         do not create output files
+      --srcdir=DIR        find the sources in DIR [configure dir or `..']
+
+Installation directories:
+  --prefix=PREFIX         install architecture-independent files in PREFIX
+                          [/usr/local]
+  --exec-prefix=EPREFIX   install architecture-dependent files in EPREFIX
+                          [PREFIX]
+
+By default, `make install' will install all the files in
+`/usr/local/bin', `/usr/local/lib' etc.  You can specify
+an installation prefix other than `/usr/local' using `--prefix',
+for instance `--prefix=$HOME'.
+
+For better control, use the options below.
+
+Fine tuning of the installation directories:
+  --bindir=DIR            user executables [EPREFIX/bin]
+  --sbindir=DIR           system admin executables [EPREFIX/sbin]
+  --libexecdir=DIR        program executables [EPREFIX/libexec]
+  --sysconfdir=DIR        read-only single-machine data [PREFIX/etc]
+  --sharedstatedir=DIR    modifiable architecture-independent data [PREFIX/com]
+  --localstatedir=DIR     modifiable single-machine data [PREFIX/var]
+  --runstatedir=DIR       modifiable per-process data [LOCALSTATEDIR/run]
+  --libdir=DIR            object code libraries [EPREFIX/lib]
+  --includedir=DIR        C header files [PREFIX/include]
+  --oldincludedir=DIR     C header files for non-gcc [/usr/include]
+  --datarootdir=DIR       read-only arch.-independent data root [PREFIX/share]
+  --datadir=DIR           read-only architecture-independent data [DATAROOTDIR]
+  --infodir=DIR           info documentation [DATAROOTDIR/info]
+  --localedir=DIR         locale-dependent data [DATAROOTDIR/locale]
+  --mandir=DIR            man documentation [DATAROOTDIR/man]
+  --docdir=DIR            documentation root [DATAROOTDIR/doc/vice]
+  --htmldir=DIR           html documentation [DOCDIR]
+  --dvidir=DIR            dvi documentation [DOCDIR]
+  --pdfdir=DIR            pdf documentation [DOCDIR]
+  --psdir=DIR             ps documentation [DOCDIR]
+
+Program names:
+  --program-prefix=PREFIX            prepend PREFIX to installed program names
+  --program-suffix=SUFFIX            append SUFFIX to installed program names
+  --program-transform-name=PROGRAM   run sed PROGRAM on installed program names
+
+System types:
+  --build=BUILD     configure for building on BUILD [guessed]
+  --host=HOST       cross-compile to build programs to run on HOST [BUILD]
+
+Optional Features:
+  --disable-option-checking  ignore unrecognized --enable/--with options
+  --disable-FEATURE       do not include FEATURE (same as --enable-FEATURE=no)
+  --enable-FEATURE[=ARG]  include FEATURE [ARG=yes]
+  --enable-silent-rules   less verbose build output (undo: "make V=1")
+  --disable-silent-rules  verbose build output (undo: "make V=0")
+  --enable-catweasel      enables CatWeasel (PCI/Zorro/Clockport SID card) support
+  --disable-hardsid       disables HardSID support
+  --enable-midi           enable MIDI support
+  --disable-new8580filter disable new 8580 filters
+  --enable-parsid         enables ParSID support
+  --disable-hwscale       disables GPU scaling of emulated screen (SDL1 UI only)
+  --enable-arch[=arch]  enable architecture specific compilation [default=yes]
+  --disable-cpuhistory    disable the 65xx cpu history feature
+  --enable-ethernet       enables The Final Ethernet emulation
+  --disable-ipv6          disables the checking for IPv6 compatibility
+  --enable-no-pic         enable the use of the no-pic switch [default=yes]
+  --disable-realdevice    disables access to real peripheral devices (CBM4Linux/OpenCBM)
+  --disable-rs232         disable RS232 support
+  --disable-openmp        disable OpenMP acceleration
+  --enable-cmake          enable generation of CMakeLists.txt files [default=no]
+  --enable-debug          enable debug source options
+  --enable-debug-gtk3ui   enables debugging for the GTK3 UI
+  --enable-debug-threads  enable debug messages about the threading code [default=no]
+  --enable-x64            enable building of the old x64 emulator [default=no]
+  --enable-x64-image      enable X64 image support [default=no]
+  --disable-optimization  disable code optimization by passing -O0 [default=no]
+  --enable-extra-warnings enable anal warnings [default=no]
+  --enable-io-simulation  enable i/o simulation devices [default=no]
+  --enable-experimental-devices    enable experimental device emulation [default=no]
+  --enable-headlessui     enables building without a UI
+  --enable-sdl1ui         enables SDL 1.2 UI support
+  --enable-sdl2ui         enables SDL 2.x UI support
+  --enable-gtk3ui         enables GTK3 UI support
+  --enable-desktop-files  enable installation of XDG desktop files (GTK3 UI only)
+  --disable-hidmgr        disable IOHIDManager joystick support on Mac
+  --disable-html-docs     do not generate the HTML documentation [default=no]
+  --enable-pdf-docs       generate the PDF documentation [default=no]
+  --enable-platformdox    enable generating of documentation specific to the current host
+  --enable-dependency-tracking
+                          do not reject slow dependency extractors
+  --disable-dependency-tracking
+                          speeds up one-time build
+  --disable-largefile     omit support for large files
+  --enable-macos-minimum-version=version
+                          compile for a specific macOS version such as 10.10
+                          or 11.0
+
+
+Optional Packages:
+  --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
+  --without-PACKAGE       do not use PACKAGE (same as --with-PACKAGE=no)
+  --without-alsa          do not use the ALSA sound system
+  --with-fastsid          use the FastSID engine
+  --with-flac             use FLAC support
+  --with-mpg123           use MPG123 for MP3 decoding
+  --with-oss              use the OSS sound system
+  --without-pulse         do not use PulseAudio sound system
+  --without-resid         do not use the reSID engine
+  --with-sdlsound         use SDL sound system
+  --without-sun           do not use the sun/netbsd sound system
+  --with-vorbis           use Ogg/Vorbis support
+  --with-lame             use LAME for MP3 encoding
+  --with-static-lame      statically link LAME MP3
+  --with-portaudio        use PortAudio for sound input
+  --with-gif              use GIF screenshot system
+  --without-png           do not use the PNG screenshot system
+  --with-unzip-bin        enables distribution of unzip.exe in the windows bindist
+  --with-libieee1284      use the libieee1284 parallel port library
+  --without-libcurl       disable libcurl support [default=no]
+  --with-gnu-ld           assume the C compiler uses GNU ld default=no
+
+Some influential environment variables:
+  FW_DIR      Location of support frameworks (macOS only)
+  CC          C compiler command
+  CFLAGS      C compiler flags
+  LDFLAGS     linker flags, e.g. -L<lib dir> if you have libraries in a
+              nonstandard directory <lib dir>
+  LIBS        libraries to pass to the linker, e.g. -l<library>
+  CPPFLAGS    (Objective) C/C++ preprocessor flags, e.g. -I<include dir> if
+              you have headers in a nonstandard directory <include dir>
+  CPP         C preprocessor
+  CXX         C++ compiler command
+  CXXFLAGS    C++ compiler flags
+  CXXCPP      C++ preprocessor
+  OBJC        Objective C compiler command
+  OBJCFLAGS   Objective C compiler flags
+  CCAS        assembler compiler command (defaults to CC)
+  CCASFLAGS   assembler compiler flags (defaults to CFLAGS)
+  PKG_CONFIG  path to pkg-config utility
+  SVN_REVISION_OVERRIDE
+
+  LIBUSB_CFLAGS
+              C compiler flags for LIBUSB, overriding pkg-config
+  LIBUSB_LIBS linker flags for LIBUSB, overriding pkg-config
+  OBJCPP      Objective C preprocessor
+  GTK_CFLAGS  C compiler flags for GTK, overriding pkg-config
+  GTK_LIBS    linker flags for GTK, overriding pkg-config
+  GLIB_CFLAGS C compiler flags for GLIB, overriding pkg-config
+  GLIB_LIBS   linker flags for GLIB, overriding pkg-config
+  GLEW_CFLAGS C compiler flags for GLEW, overriding pkg-config
+  GLEW_LIBS   linker flags for GLEW, overriding pkg-config
+  FONTCONFIG_CFLAGS
+              C compiler flags for FONTCONFIG, overriding pkg-config
+  FONTCONFIG_LIBS
+              linker flags for FONTCONFIG, overriding pkg-config
+  SDL2_CFLAGS C compiler flags for SDL2, overriding pkg-config
+  SDL2_LIBS   linker flags for SDL2, overriding pkg-config
+  SDL2_IMAGE_CFLAGS
+              C compiler flags for SDL2_IMAGE, overriding pkg-config
+  SDL2_IMAGE_LIBS
+              linker flags for SDL2_IMAGE, overriding pkg-config
+  SDL_IMAGE_CFLAGS
+              C compiler flags for SDL_IMAGE, overriding pkg-config
+  SDL_IMAGE_LIBS
+              linker flags for SDL_IMAGE, overriding pkg-config
+  libevdev_CFLAGS
+              C compiler flags for libevdev, overriding pkg-config
+  libevdev_LIBS
+              linker flags for libevdev, overriding pkg-config
+  libcurl_CFLAGS
+              C compiler flags for libcurl, overriding pkg-config
+  libcurl_LIBS
+              linker flags for libcurl, overriding pkg-config
+  PNG_CFLAGS  C compiler flags for PNG, overriding pkg-config
+  PNG_LIBS    linker flags for PNG, overriding pkg-config
+
+Use these variables to override the choices made by `configure' or to help
+it to find libraries and programs with nonstandard names/locations.
+
+Report bugs to the package provider.
