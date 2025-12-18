@@ -1,0 +1,116 @@
+add_library(libsid)
+
+target_compile_definitions(
+    libsid
+    PRIVATE
+        $<$<COMPILE_LANGUAGE:C>:HAVE_CONFIG_H NDEBUG _REENTRANT _REENTRANT >
+        $<$<COMPILE_LANGUAGE:CXX>:HAVE_CONFIG_H NDEBUG _REENTRANT _REENTRANT >
+        $<$<COMPILE_LANGUAGE:OBJC>:>
+    )
+
+target_include_directories(
+    libsid
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}
+        ${CMAKE_CURRENT_SOURCE_DIR}/
+        ${CMAKE_SOURCE_DIR}/src/arch/systemheaderoverride
+        ${CMAKE_SOURCE_DIR}/src/arch/sdl
+        ${CMAKE_SOURCE_DIR}/src/arch/shared
+        ${CMAKE_SOURCE_DIR}/src/resid
+        ${CMAKE_SOURCE_DIR}/src/resid-dtv
+        ${CMAKE_SOURCE_DIR}/src
+        ${CMAKE_SOURCE_DIR}/src/joyport
+        /usr/include/SDL2
+        /usr/include/libpng16
+        /usr/include/aarch64-linux-gnu
+        /usr/include/webp
+    )
+
+target_compile_options(
+    libsid
+    PRIVATE
+        $<$<COMPILE_LANGUAGE:C>:-Wno-deprecated-declarations -g -O3 -W -Wall -Wextra -Wformat -Wformat-signedness -Wformat-security -Wshadow -Wpointer-arith -Wmissing-prototypes -Wstrict-prototypes -Wuninitialized -Wmissing-field-initializers -Wunreachable-code -Werror=implicit-function-declaration -Wfatal-errors -Wdiscarded-qualifiers -Wno-unknown-pragmas -Wunused-but-set-variable -Wno-sign-compare -Wno-ignored-qualifiers -Wno-unused-parameter -fopenmp>
+        $<$<COMPILE_LANGUAGE:CXX>:-Wno-deprecated-declarations -g -O3 -Wall -Wformat -Wshadow -Wpointer-arith -Wuninitialized -Wunreachable-code -Wno-unused-parameter -Wfatal-errors -fopenmp -fno-exceptions>
+        $<$<COMPILE_LANGUAGE:OBJC>:-Wno-deprecated-declarations >
+    )
+
+target_sources(
+    libsid
+    PRIVATE
+        catweaselmkiii.c
+        fastsid.c
+        hardsid.c
+        parsid.c
+        usbsid.c
+        sid-cmdline-options.c
+        sid-resources.c
+        sid-snapshot.c
+        sid.c
+        fastsid.h
+        sid-cmdline-options.h
+        sid-resources.h
+        sid-snapshot.h
+        sid.h
+        wave6581.h
+        wave8580.h
+        resid.cc
+    )
+
+add_library(libsid_dtv)
+
+target_compile_definitions(
+    libsid_dtv
+    PRIVATE
+        $<$<COMPILE_LANGUAGE:C>:HAVE_CONFIG_H NDEBUG _REENTRANT _REENTRANT >
+        $<$<COMPILE_LANGUAGE:CXX>:HAVE_CONFIG_H NDEBUG _REENTRANT _REENTRANT >
+        $<$<COMPILE_LANGUAGE:OBJC>:>
+    )
+
+target_include_directories(
+    libsid_dtv
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}
+        ${CMAKE_CURRENT_SOURCE_DIR}/
+        ${CMAKE_SOURCE_DIR}/src/arch/systemheaderoverride
+        ${CMAKE_SOURCE_DIR}/src/arch/sdl
+        ${CMAKE_SOURCE_DIR}/src/arch/shared
+        ${CMAKE_SOURCE_DIR}/src/resid
+        ${CMAKE_SOURCE_DIR}/src/resid-dtv
+        ${CMAKE_SOURCE_DIR}/src
+        ${CMAKE_SOURCE_DIR}/src/joyport
+        /usr/include/SDL2
+        /usr/include/libpng16
+        /usr/include/aarch64-linux-gnu
+        /usr/include/webp
+    )
+
+target_compile_options(
+    libsid_dtv
+    PRIVATE
+        $<$<COMPILE_LANGUAGE:C>:-Wno-deprecated-declarations -g -O3 -W -Wall -Wextra -Wformat -Wformat-signedness -Wformat-security -Wshadow -Wpointer-arith -Wmissing-prototypes -Wstrict-prototypes -Wuninitialized -Wmissing-field-initializers -Wunreachable-code -Werror=implicit-function-declaration -Wfatal-errors -Wdiscarded-qualifiers -Wno-unknown-pragmas -Wunused-but-set-variable -Wno-sign-compare -Wno-ignored-qualifiers -Wno-unused-parameter -fopenmp>
+        $<$<COMPILE_LANGUAGE:CXX>:-Wno-deprecated-declarations -g -O3 -Wall -Wformat -Wshadow -Wpointer-arith -Wuninitialized -Wunreachable-code -Wno-unused-parameter -Wfatal-errors -fopenmp -fno-exceptions>
+        $<$<COMPILE_LANGUAGE:OBJC>:-Wno-deprecated-declarations >
+    )
+
+target_sources(
+    libsid_dtv
+    PRIVATE
+        catweaselmkiii.c
+        fastsid.c
+        hardsid.c
+        parsid.c
+        usbsid.c
+        sid-cmdline-options.c
+        sid-resources.c
+        sid-snapshot.c
+        sid.c
+        fastsid.h
+        sid-cmdline-options.h
+        sid-resources.h
+        sid-snapshot.h
+        sid.h
+        wave6581.h
+        wave8580.h
+        resid-dtv.cc
+    )
+
