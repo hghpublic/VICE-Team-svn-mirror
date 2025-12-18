@@ -1,0 +1,38 @@
+= VICE
+:toc:
+:sectnums:
+ifndef::env-github[:icons: font]
+:note-caption: :paperclip:
+:important-caption: :exclamation:
+:warning-caption: :warning:
+
+== VICE
+
+https://github.com/VICE-Team/svn-mirror
+
+https://github.com/hghpublic/VICE-Team-svn-mirror
+
+=== build
+
+[source, shell]
+----
+cd vice
+./autogen.sh > dev/logs/autogen.sh.log 2>&1
+./configure > dev/logs/configure.log 2>&1
+make > dev/logs/make.log 2>&1
+----
+
+==== `cmake-bootstrap.sh`
+
+[source, shell]
+----
+./cmake-bootstrap.sh > dev/logs/cmake-bootstrap.sh.log 2>&1
+----
+
+==== configure help
+
+[source, shell]
+----
+./configure --help > dev/configure-help.txt 2>&1
+----
+
