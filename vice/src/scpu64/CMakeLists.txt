@@ -1,0 +1,134 @@
+add_library(libscpu64)
+
+target_compile_definitions(
+    libscpu64
+    PRIVATE
+        $<$<COMPILE_LANGUAGE:C>:HAVE_CONFIG_H NDEBUG _REENTRANT _REENTRANT >
+        $<$<COMPILE_LANGUAGE:CXX>:>
+        $<$<COMPILE_LANGUAGE:OBJC>:>
+    )
+
+target_include_directories(
+    libscpu64
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}
+        ${CMAKE_CURRENT_SOURCE_DIR}/
+        ${CMAKE_SOURCE_DIR}/src/arch/systemheaderoverride
+        ${CMAKE_SOURCE_DIR}/src/arch/sdl
+        ${CMAKE_SOURCE_DIR}/src/arch/shared
+        ${CMAKE_SOURCE_DIR}/src
+        ${CMAKE_SOURCE_DIR}/src/drive
+        ${CMAKE_SOURCE_DIR}/src/printerdrv
+        ${CMAKE_SOURCE_DIR}/src/c64
+        ${CMAKE_SOURCE_DIR}/src/c64/cart
+        ${CMAKE_SOURCE_DIR}/src/raster
+        ${CMAKE_SOURCE_DIR}/src/sid
+        ${CMAKE_SOURCE_DIR}/src/tape
+        ${CMAKE_SOURCE_DIR}/src/userport
+        ${CMAKE_SOURCE_DIR}/src/viciisc
+        ${CMAKE_SOURCE_DIR}/src/video
+        ${CMAKE_SOURCE_DIR}/src/lib/p64
+        ${CMAKE_SOURCE_DIR}/src/vdc
+        ${CMAKE_SOURCE_DIR}/src/core/rtc
+        ${CMAKE_SOURCE_DIR}/src/joyport
+        ${CMAKE_SOURCE_DIR}/src/samplerdrv
+        ${CMAKE_SOURCE_DIR}/src/rs232drv
+        ${CMAKE_SOURCE_DIR}/src/datasette
+        ${CMAKE_SOURCE_DIR}/src/tapeport
+        /usr/include/SDL2
+        /usr/include/libpng16
+        /usr/include/aarch64-linux-gnu
+        /usr/include/webp
+    )
+
+target_compile_options(
+    libscpu64
+    PRIVATE
+        $<$<COMPILE_LANGUAGE:C>:-Wno-deprecated-declarations -g -O3 -W -Wall -Wextra -Wformat -Wformat-signedness -Wformat-security -Wshadow -Wpointer-arith -Wmissing-prototypes -Wstrict-prototypes -Wuninitialized -Wmissing-field-initializers -Wunreachable-code -Werror=implicit-function-declaration -Wfatal-errors -Wdiscarded-qualifiers -Wno-unknown-pragmas -Wunused-but-set-variable -Wno-sign-compare -Wno-ignored-qualifiers -Wno-unused-parameter -fopenmp>
+        $<$<COMPILE_LANGUAGE:CXX>:-Wno-deprecated-declarations -g -O3 -Wall -Wformat -Wshadow -Wpointer-arith -Wuninitialized -Wunreachable-code -Wno-unused-parameter -Wfatal-errors -fopenmp -fno-exceptions>
+        $<$<COMPILE_LANGUAGE:OBJC>:-Wno-deprecated-declarations >
+    )
+
+target_sources(
+    libscpu64
+    PRIVATE
+        scpu64-cmdline-options.c
+        scpu64-resources.c
+        scpu64-snapshot.c
+        scpu64.c
+        scpu64cpu.c
+        scpu64gluelogic.c
+        scpu64mem.c
+        scpu64memsnapshot.c
+        scpu64meminit.c
+        scpu64model.c
+        scpu64rom.c
+        scpu64-cmdline-options.h
+        scpu64-resources.h
+        scpu64-snapshot.h
+        scpu64.h
+        scpu64cpu.h
+        scpu64gluelogic.h
+        scpu64mem.h
+        scpu64memsnapshot.h
+        scpu64meminit.h
+        scpu64rom.h
+    )
+
+add_library(libscpu64stubs)
+
+target_compile_definitions(
+    libscpu64stubs
+    PRIVATE
+        $<$<COMPILE_LANGUAGE:C>:HAVE_CONFIG_H NDEBUG _REENTRANT _REENTRANT >
+        $<$<COMPILE_LANGUAGE:CXX>:>
+        $<$<COMPILE_LANGUAGE:OBJC>:>
+    )
+
+target_include_directories(
+    libscpu64stubs
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}
+        ${CMAKE_CURRENT_SOURCE_DIR}/
+        ${CMAKE_SOURCE_DIR}/src/arch/systemheaderoverride
+        ${CMAKE_SOURCE_DIR}/src/arch/sdl
+        ${CMAKE_SOURCE_DIR}/src/arch/shared
+        ${CMAKE_SOURCE_DIR}/src
+        ${CMAKE_SOURCE_DIR}/src/drive
+        ${CMAKE_SOURCE_DIR}/src/printerdrv
+        ${CMAKE_SOURCE_DIR}/src/c64
+        ${CMAKE_SOURCE_DIR}/src/c64/cart
+        ${CMAKE_SOURCE_DIR}/src/raster
+        ${CMAKE_SOURCE_DIR}/src/sid
+        ${CMAKE_SOURCE_DIR}/src/tape
+        ${CMAKE_SOURCE_DIR}/src/userport
+        ${CMAKE_SOURCE_DIR}/src/viciisc
+        ${CMAKE_SOURCE_DIR}/src/video
+        ${CMAKE_SOURCE_DIR}/src/lib/p64
+        ${CMAKE_SOURCE_DIR}/src/vdc
+        ${CMAKE_SOURCE_DIR}/src/core/rtc
+        ${CMAKE_SOURCE_DIR}/src/joyport
+        ${CMAKE_SOURCE_DIR}/src/samplerdrv
+        ${CMAKE_SOURCE_DIR}/src/rs232drv
+        ${CMAKE_SOURCE_DIR}/src/datasette
+        ${CMAKE_SOURCE_DIR}/src/tapeport
+        /usr/include/SDL2
+        /usr/include/libpng16
+        /usr/include/aarch64-linux-gnu
+        /usr/include/webp
+    )
+
+target_compile_options(
+    libscpu64stubs
+    PRIVATE
+        $<$<COMPILE_LANGUAGE:C>:-Wno-deprecated-declarations -g -O3 -W -Wall -Wextra -Wformat -Wformat-signedness -Wformat-security -Wshadow -Wpointer-arith -Wmissing-prototypes -Wstrict-prototypes -Wuninitialized -Wmissing-field-initializers -Wunreachable-code -Werror=implicit-function-declaration -Wfatal-errors -Wdiscarded-qualifiers -Wno-unknown-pragmas -Wunused-but-set-variable -Wno-sign-compare -Wno-ignored-qualifiers -Wno-unused-parameter -fopenmp>
+        $<$<COMPILE_LANGUAGE:CXX>:-Wno-deprecated-declarations -g -O3 -Wall -Wformat -Wshadow -Wpointer-arith -Wuninitialized -Wunreachable-code -Wno-unused-parameter -Wfatal-errors -fopenmp -fno-exceptions>
+        $<$<COMPILE_LANGUAGE:OBJC>:-Wno-deprecated-declarations >
+    )
+
+target_sources(
+    libscpu64stubs
+    PRIVATE
+        scpu64-stubs.c
+    )
+
