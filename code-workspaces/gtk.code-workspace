@@ -1,0 +1,17 @@
+
+{
+	"folders": [
+        {
+            "path": "..",
+            "name": "root"
+        },
+        {
+            "path": "../dev/src/gtk/gtk3",
+            "name": "gtk3"
+        },
+        {
+            "path": "../dev/src/gtk/gtk4",
+            "name": "gtk4"
+        }
+    ]
+}

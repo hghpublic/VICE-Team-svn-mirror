@@ -1,0 +1,17 @@
+
+{
+	"folders": [
+        {
+            "path": "..",
+            "name": "root"
+        },
+        {
+            "path": "../dev/src/sdl/sdl2",
+            "name": "sdl2"
+        },
+        {
+            "path": "../dev/src/sdl/sdl3",
+            "name": "sdl3"
+        }
+    ]
+}
