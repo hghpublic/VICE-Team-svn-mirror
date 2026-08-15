@@ -1,0 +1,44 @@
+= VICE - Windows 11 Pro on ARM
+:toc:
+:sectnums:
+ifndef::env-github[:icons: font]
+:note-caption: :paperclip:
+:important-caption: :exclamation:
+:warning-caption: :warning:
+
+[IMPORTANT]
+====
+The commit history of this branch is volatile. +
+Rebasing and force pushing happens at will. +
+The commits in this branch mostly collect changes with a narrow scope. +
+They rarely document code evolution. +
+The history may be rewritten without notice.
+====
+
+== VICE
+
+https://vice-emu.sourceforge.io/
+
+SourceForge::
+
+https://sf.net/projects/vice-emu
+
+
+== VICE Output to PostScript (VICEtoPS)
+
+https://github.com/pdbuchan/vicetops
+
+
+== YouTube
+
+=== Printing From VICE Commodore 64 Emulator
+
+https://www.youtube.com/watch?v=qh_5yEA1iHU
+
+
+== Stash
+
+=== How to use the VICE user port printer?
+
+https://www.lemon64.com/forum/viewtopic.php?t=84970
+
