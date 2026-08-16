@@ -10,6 +10,13 @@ endif()
 project(VICE C CXX)
 set(CMAKE_STATIC_LIBRARY_PREFIX "")
 
+find_package(SDL2 CONFIG REQUIRED)
+# target_link_libraries(${targeet}
+#     PRIVATE
+#     $<TARGET_NAME_IF_EXISTS:SDL2::SDL2main>
+#     $<IF:$<TARGET_EXISTS:SDL2::SDL2>,SDL2::SDL2,SDL2::SDL2-static>
+# )
+
 add_subdirectory(src)
 
 set(FIRST_RUN_COMPLETE true CACHE INTERNAL "Used to detect first run")
