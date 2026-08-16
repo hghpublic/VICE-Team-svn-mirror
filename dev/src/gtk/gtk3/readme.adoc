@@ -1,0 +1,70 @@
+= GTK3
+:toc:
+:sectnums:
+
+== GTK
+
+https://gitlab.gnome.org/GNOME/gtk
+
+https://github.com/GNOME/gtk
+
+=== GTK3
+
+https://gitlab.gnome.org/GNOME/gtk/-/tree/gtk-3-24
+
+https://github.com/GNOME/gtk/tree/3.24.52
+
+https://docs.gtk.org/gtk3/
+
+=== Getting Started with GTK
+
+https://docs.gtk.org/gtk3/getting_started.html
+
+=== Using GTK on Windows
+
+https://docs.gtk.org/gtk3/windows.html
+
+== cmake
+
+`gtk3` provides `pkg-config` modules::
++
+[source, cmake]
+----
+# GNOME Accessibility Implementation Library
+gail-3.0
+
+# GTK+ Drawing Kit
+gdk-3.0
+
+# GTK+ Drawing Kit
+gdk-quartz-3.0
+
+# GTK+ Graphical UI Library
+gtk+-3.0
+
+# GTK+ Graphical UI Library
+gtk+-quartz-3.0
+
+# GTK+ Unix print support
+gtk+-unix-print-3.0
+----
+
+== mac
+
+[source, cmake]
+----
+if (CMAKE_SYSTEM_NAME STREQUAL "Darwin")
+target_link_libraries(${target} PRIVATE
+  "$<LINK_LIBRARY:FRAMEWORK,Carbon>"
+  "$<LINK_LIBRARY:FRAMEWORK,Cocoa>"
+  "$<LINK_LIBRARY:FRAMEWORK,CoreFoundation>"
+  "$<LINK_LIBRARY:FRAMEWORK,CoreGraphics>"
+  "$<LINK_LIBRARY:FRAMEWORK,CoreText>"
+  "$<LINK_LIBRARY:FRAMEWORK,CoreVideo>"
+  "$<LINK_LIBRARY:FRAMEWORK,Foundation>"
+  "$<LINK_LIBRARY:FRAMEWORK,IOSurface>"
+  "$<LINK_LIBRARY:FRAMEWORK,QuartzCore>"
+  "$<LINK_LIBRARY:FRAMEWORK,UniformTypeIdentifiers>"
+)
+endif()
+----

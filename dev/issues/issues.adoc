@@ -1,0 +1,211 @@
+= Issues
+
+== cmake
+
+----
+[cmake] CMake Error: The following variables are used in this project, but they are set to NOTFOUND.
+
+LIB_ASOUND
+LIB_SDL2_IMAGE
+----
+
+----
+[proc] Executing command: /usr/bin/clang -v
+[main] Configuring project: vice 
+[proc] Executing command: /opt/homebrew/bin/cmake -DCMAKE_BUILD_TYPE:STRING=Debug -DCMAKE_TOOLCHAIN_FILE:STRING=/Users/hgh/hgh/bin/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -DCMAKE_C_COMPILER:FILEPATH=/usr/bin/clang -DCMAKE_CXX_COMPILER:FILEPATH=/usr/bin/clang++ --no-warn-unused-cli -S /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice -B /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/build -G Ninja
+[cmake] The --no-warn-unused-cli option is deprecated.  Use -Wno-unused-cli instead.
+[cmake] -- Running vcpkg install
+[cmake] Detecting compiler hash for triplet arm64-osx...
+[cmake] Compiler found: /usr/bin/c++
+[cmake] The following packages will be built and installed:
+[cmake]     sdl2:arm64-osx@2.32.10#1
+[cmake]   * vcpkg-cmake:arm64-osx@2024-04-23
+[cmake]   * vcpkg-cmake-config:arm64-osx@2026-07-21
+[cmake] Additional packages (*) will be modified to complete this operation.
+[cmake] Restored 0 package(s) from /Users/hgh/.cache/vcpkg/archives in 834 us. Use --debug to see more details.
+[cmake] Installing 1/3 vcpkg-cmake-config:arm64-osx@2026-07-21...
+[cmake] vcpkg-cmake-config:arm64-osx@2026-07-21 package ABI: 5694d88f6a5096a8cab9ab5e445a89c281d8330b0966ba53d91990c50a645fd2
+[cmake] Building vcpkg-cmake-config:arm64-osx@2026-07-21...
+[cmake] -- Installing: /Users/hgh/hgh/bin/vcpkg/packages/vcpkg-cmake-config_arm64-osx/share/vcpkg-cmake-config/vcpkg_cmake_config_fixup.cmake
+[cmake] -- Installing: /Users/hgh/hgh/bin/vcpkg/packages/vcpkg-cmake-config_arm64-osx/share/vcpkg-cmake-config/vcpkg-port-config.cmake
+[cmake] -- Installing: /Users/hgh/hgh/bin/vcpkg/packages/vcpkg-cmake-config_arm64-osx/share/vcpkg-cmake-config/copyright
+[cmake] -- Skipping post-build validation due to VCPKG_POLICY_EMPTY_PACKAGE
+[cmake] Starting submission of vcpkg-cmake-config:arm64-osx@2026-07-21 to 1 binary cache(s) in the background
+[cmake] Elapsed time to handle vcpkg-cmake-config:arm64-osx: 21.6 ms
+[cmake] Installing 2/3 vcpkg-cmake:arm64-osx@2024-04-23...
+[cmake] vcpkg-cmake:arm64-osx@2024-04-23 package ABI: 239f18c8b5b70e87dffbd19a921e7df746e76cc24ea2defd2319b80bba26c311
+[cmake] Building vcpkg-cmake:arm64-osx@2024-04-23...
+[cmake] -- Installing: /Users/hgh/hgh/bin/vcpkg/packages/vcpkg-cmake_arm64-osx/share/vcpkg-cmake/vcpkg_cmake_configure.cmake
+[cmake] -- Installing: /Users/hgh/hgh/bin/vcpkg/packages/vcpkg-cmake_arm64-osx/share/vcpkg-cmake/vcpkg_cmake_build.cmake
+[cmake] -- Installing: /Users/hgh/hgh/bin/vcpkg/packages/vcpkg-cmake_arm64-osx/share/vcpkg-cmake/vcpkg_cmake_install.cmake
+[cmake] -- Installing: /Users/hgh/hgh/bin/vcpkg/packages/vcpkg-cmake_arm64-osx/share/vcpkg-cmake/vcpkg-port-config.cmake
+[cmake] -- Installing: /Users/hgh/hgh/bin/vcpkg/packages/vcpkg-cmake_arm64-osx/share/vcpkg-cmake/copyright
+[cmake] -- Performing post-build validation
+[cmake] Starting submission of vcpkg-cmake:arm64-osx@2024-04-23 to 1 binary cache(s) in the background
+[cmake] Elapsed time to handle vcpkg-cmake:arm64-osx: 22.1 ms
+[cmake] Completed submission of vcpkg-cmake-config:arm64-osx@2026-07-21 to 1 binary cache(s) in 8.42 ms
+[cmake] Installing 3/3 sdl2:arm64-osx@2.32.10#1...
+[cmake] sdl2:arm64-osx@2.32.10#1 package ABI: 82ebf89698ce9c4673dbecec75843213bfc2afa57d25ba3018c9bc61d620a41d
+[cmake] Building sdl2:arm64-osx@2.32.10#1...
+[cmake] Downloading https://github.com/libsdl-org/SDL/archive/release-2.32.10.tar.gz -> libsdl-org-SDL-release-2.32.10.tar.gz
+[cmake] Successfully downloaded libsdl-org-SDL-release-2.32.10.tar.gz
+[cmake] -- Extracting source /Users/hgh/hgh/bin/vcpkg/downloads/libsdl-org-SDL-release-2.32.10.tar.gz
+[cmake] -- Applying patch deps.patch
+[cmake] -- Applying patch alsa-dep-fix.patch
+[cmake] -- Applying patch cxx-linkage-pkgconfig.diff
+[cmake] -- Using source at /Users/hgh/hgh/bin/vcpkg/buildtrees/sdl2/src/se-2.32.10-89f6bbf859.clean
+[cmake] -- Configuring arm64-osx
+[cmake] -- Building arm64-osx-dbg
+[cmake] -- Building arm64-osx-rel
+[cmake] -- Fixing pkgconfig file: /Users/hgh/hgh/bin/vcpkg/packages/sdl2_arm64-osx/lib/pkgconfig/sdl2.pc
+[cmake] -- Fixing pkgconfig file: /Users/hgh/hgh/bin/vcpkg/packages/sdl2_arm64-osx/debug/lib/pkgconfig/sdl2.pc
+[cmake] -- Installing: /Users/hgh/hgh/bin/vcpkg/packages/sdl2_arm64-osx/share/sdl2/usage
+[cmake] -- Installing: /Users/hgh/hgh/bin/vcpkg/packages/sdl2_arm64-osx/share/sdl2/copyright
+[cmake] -- Performing post-build validation
+[cmake] Starting submission of sdl2:arm64-osx@2.32.10#1 to 1 binary cache(s) in the background
+[cmake] Elapsed time to handle sdl2:arm64-osx: 23 s
+[cmake] Installed contents are licensed to you by owners. Microsoft is not responsible for, nor does it grant any licenses to, third-party packages.
+[cmake] Packages installed in this vcpkg installation declare the following licenses:
+[cmake] MIT
+[cmake] Zlib
+[cmake] sdl2 provides CMake targets:
+[cmake] 
+[cmake]     find_package(SDL2 CONFIG REQUIRED)
+[cmake]     target_link_libraries(main
+[cmake]         PRIVATE
+[cmake]         $<TARGET_NAME_IF_EXISTS:SDL2::SDL2main>
+[cmake]         $<IF:$<TARGET_EXISTS:SDL2::SDL2>,SDL2::SDL2,SDL2::SDL2-static>
+[cmake]     )
+[cmake] 
+[cmake] Completed submission of vcpkg-cmake:arm64-osx@2024-04-23 to 1 binary cache(s) in 6.79 ms
+[cmake] Waiting for 1 remaining binary cache submissions...
+[cmake] Completed submission of sdl2:arm64-osx@2.32.10#1 to 1 binary cache(s) in 299 ms (1/1)
+[cmake] All requested installations completed successfully in: 23 s
+[cmake] -- Running vcpkg install - done
+[cmake] -- Configuring done (24.9s)
+[cmake] CMake Error: The following variables are used in this project, but they are set to NOTFOUND.
+[cmake] Please set them or make sure they are set and tested correctly in the CMake files:
+[cmake] LIB_ASOUND
+[cmake]     linked by target "xscpu64" in directory /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src
+[cmake]     linked by target "xcbm2" in directory /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src
+[cmake]     linked by target "xplus4" in directory /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src
+[cmake]     linked by target "xvic" in directory /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src
+[cmake]     linked by target "x64dtv" in directory /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src
+[cmake]     linked by target "vsid" in directory /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src
+[cmake]     linked by target "x64sc" in directory /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src
+[cmake]     linked by target "xcbm5x0" in directory /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src
+[cmake]     linked by target "xpet" in directory /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src
+[cmake]     linked by target "x128" in directory /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src
+[cmake] LIB_SDL2_IMAGE
+[cmake]     linked by target "xscpu64" in directory /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src
+[cmake]     linked by target "c1541" in directory /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src
+[cmake]     linked by target "xcbm2" in directory /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src
+[cmake]     linked by target "xplus4" in directory /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src
+[cmake]     linked by target "xvic" in directory /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src
+[cmake]     linked by target "x64dtv" in directory /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src
+[cmake]     linked by target "vsid" in directory /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src
+[cmake]     linked by target "x64sc" in directory /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src
+[cmake]     linked by target "xcbm5x0" in directory /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src
+[cmake]     linked by target "xpet" in directory /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src
+[cmake]     linked by target "x128" in directory /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src
+[cmake] 
+[cmake] CMake Warning (policy) at src/CMakeLists.txt:123 (target_sources):
+[cmake]   Policy CMP0115 is not set: Source file extensions must be explicit.  Run
+[cmake]   "cmake --help-policy CMP0115" for policy details.  Use the cmake_policy
+[cmake]   command to set the policy and suppress this warning.
+[cmake] 
+[cmake]   File:
+[cmake] 
+[cmake]     /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src/debug.h.in
+[cmake] This warning is for project developers.  Use -Wno-author or -Wno-policy to
+[cmake] suppress it.
+[cmake] 
+[cmake] CMake Warning (policy) at src/CMakeLists.txt:123 (target_sources):
+[cmake]   Policy CMP0115 is not set: Source file extensions must be explicit.  Run
+[cmake]   "cmake --help-policy CMP0115" for policy details.  Use the cmake_policy
+[cmake]   command to set the policy and suppress this warning.
+[cmake] 
+[cmake]   File:
+[cmake] 
+[cmake]     /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src/version.h.in
+[cmake] This warning is for project developers.  Use -Wno-author or -Wno-policy to
+[cmake] suppress it.
+[cmake] 
+[cmake] -- Generating done (0.2s)
+[cmake] CMake Generate step failed.  Build files cannot be regenerated correctly.
+[proc] The command: /opt/homebrew/bin/cmake -DCMAKE_BUILD_TYPE:STRING=Debug -DCMAKE_TOOLCHAIN_FILE:STRING=/Users/hgh/hgh/bin/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -DCMAKE_C_COMPILER:FILEPATH=/usr/bin/clang -DCMAKE_CXX_COMPILER:FILEPATH=/usr/bin/clang++ --no-warn-unused-cli -S /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice -B /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/build -G Ninja exited with code: 1
+[main] Configuring project: vice 
+[proc] Executing command: /opt/homebrew/bin/cmake -DCMAKE_BUILD_TYPE:STRING=Debug -DCMAKE_TOOLCHAIN_FILE:STRING=/Users/hgh/hgh/bin/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -DCMAKE_C_COMPILER:FILEPATH=/usr/bin/clang -DCMAKE_CXX_COMPILER:FILEPATH=/usr/bin/clang++ --no-warn-unused-cli -S /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice -B /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/build -G Ninja
+[cmake] The --no-warn-unused-cli option is deprecated.  Use -Wno-unused-cli instead.
+[cmake] -- Running vcpkg install
+[cmake] Detecting compiler hash for triplet arm64-osx...
+[cmake] Compiler found: /usr/bin/c++
+[cmake] The following packages are already installed:
+[cmake]     sdl2:arm64-osx@2.32.10#1
+[cmake]   * vcpkg-cmake:arm64-osx@2024-04-23
+[cmake]   * vcpkg-cmake-config:arm64-osx@2026-07-21
+[cmake] sdl2 provides CMake targets:
+[cmake] 
+[cmake]     find_package(SDL2 CONFIG REQUIRED)
+[cmake]     target_link_libraries(main
+[cmake]         PRIVATE
+[cmake]         $<TARGET_NAME_IF_EXISTS:SDL2::SDL2main>
+[cmake]         $<IF:$<TARGET_EXISTS:SDL2::SDL2>,SDL2::SDL2,SDL2::SDL2-static>
+[cmake]     )
+[cmake] 
+[cmake] All requested installations completed successfully in: 40.8 us
+[cmake] -- Running vcpkg install - done
+[cmake] -- Configuring done (0.9s)
+[cmake] CMake Error: The following variables are used in this project, but they are set to NOTFOUND.
+[cmake] Please set them or make sure they are set and tested correctly in the CMake files:
+[cmake] LIB_ASOUND
+[cmake]     linked by target "xscpu64" in directory /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src
+[cmake]     linked by target "xcbm2" in directory /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src
+[cmake]     linked by target "xplus4" in directory /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src
+[cmake]     linked by target "xvic" in directory /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src
+[cmake]     linked by target "x64dtv" in directory /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src
+[cmake]     linked by target "vsid" in directory /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src
+[cmake]     linked by target "x64sc" in directory /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src
+[cmake]     linked by target "xcbm5x0" in directory /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src
+[cmake]     linked by target "xpet" in directory /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src
+[cmake]     linked by target "x128" in directory /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src
+[cmake] LIB_SDL2_IMAGE
+[cmake]     linked by target "xscpu64" in directory /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src
+[cmake]     linked by target "c1541" in directory /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src
+[cmake]     linked by target "xcbm2" in directory /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src
+[cmake]     linked by target "xplus4" in directory /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src
+[cmake]     linked by target "xvic" in directory /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src
+[cmake]     linked by target "x64dtv" in directory /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src
+[cmake]     linked by target "vsid" in directory /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src
+[cmake]     linked by target "x64sc" in directory /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src
+[cmake]     linked by target "xcbm5x0" in directory /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src
+[cmake]     linked by target "xpet" in directory /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src
+[cmake]     linked by target "x128" in directory /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src
+[cmake] 
+[cmake] CMake Warning (policy) at src/CMakeLists.txt:123 (target_sources):
+[cmake]   Policy CMP0115 is not set: Source file extensions must be explicit.  Run
+[cmake]   "cmake --help-policy CMP0115" for policy details.  Use the cmake_policy
+[cmake]   command to set the policy and suppress this warning.
+[cmake] 
+[cmake]   File:
+[cmake] 
+[cmake]     /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src/debug.h.in
+[cmake] This warning is for project developers.  Use -Wno-author or -Wno-policy to
+[cmake] suppress it.
+[cmake] 
+[cmake] CMake Warning (policy) at src/CMakeLists.txt:123 (target_sources):
+[cmake]   Policy CMP0115 is not set: Source file extensions must be explicit.  Run
+[cmake]   "cmake --help-policy CMP0115" for policy details.  Use the cmake_policy
+[cmake]   command to set the policy and suppress this warning.
+[cmake] 
+[cmake]   File:
+[cmake] 
+[cmake]     /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/src/version.h.in
+[cmake] This warning is for project developers.  Use -Wno-author or -Wno-policy to
+[cmake] suppress it.
+[cmake] 
+[cmake] -- Generating done (0.2s)
+[cmake] CMake Generate step failed.  Build files cannot be regenerated correctly.
+[proc] The command: /opt/homebrew/bin/cmake -DCMAKE_BUILD_TYPE:STRING=Debug -DCMAKE_TOOLCHAIN_FILE:STRING=/Users/hgh/hgh/bin/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -DCMAKE_C_COMPILER:FILEPATH=/usr/bin/clang -DCMAKE_CXX_COMPILER:FILEPATH=/usr/bin/clang++ --no-warn-unused-cli -S /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice -B /Users/hgh/hgh/dev/github/hghpublic/VICE-Team-svn-mirror/vice/build -G Ninja exited with code: 1
+
+----

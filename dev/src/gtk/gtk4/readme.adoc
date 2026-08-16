@@ -1,0 +1,21 @@
+= GTK4
+
+https://gitlab.gnome.org/GNOME/gtk
+
+
+`gtk` provides `pkg-config` modules:
+----
+
+# GTK AT-SPI accessibility support
+gtk4-atspi
+
+# GTK Graphical UI Library
+gtk4-macos
+
+# GTK Unix print support
+gtk4-unix-print
+
+# GTK Graphical UI Library
+gtk4
+
+----
